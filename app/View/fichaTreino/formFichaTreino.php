@@ -1,23 +1,17 @@
-<style>
-    .hs-item {
-        width: 100%;
-        height: 25vh;
-        background-size: cover;
-        background-position: center;
-        position: relative;
-        display: flex;
-        align-items: center;
-    }
-</style>
-
 <?php
 
     use Core\Library\Session;
 
     $aAluno = $dados['aAluno'];
+    $aProfessor = $dados['aProfessor'];
 
-    $professorId = Session::get('userId'); // pega o ID da sessão
-    $professorNome = Session::get('userNome'); // se tiver o nome na sessão
+    foreach($aProfessor as $value) {
+        if($value['usuario_id'] == Session::get('userId')) {
+            $professorId = $value['id'];
+            $professorNome = $value['nome']; 
+        }
+    }
+
 ?>
 
 <div class="hs-item set-bg" data-setbg="<?= baseUrl() ?>assets/img/hero/hero-1.jpg">

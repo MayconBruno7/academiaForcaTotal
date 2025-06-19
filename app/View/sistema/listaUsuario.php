@@ -1,24 +1,10 @@
 <?php
 
-use Core\Library\Session;
-
 $aNivel  = ["1" => "Super Administrador", "11" => "Administador", "21" => "Usuário"];
 $aStatus = ["1" => "Ativo", "2" => "Inativo", "3" => "Bloqueado"];
 
 ?>
 
-<style>
-.hs-item {
-    width: 100%;
-    height: 25vh; /* Ocupa toda a altura da viewport */
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    display: flex;
-    align-items: center; /* Centraliza verticalmente */
-}
-
-</style>
 <div class="hs-item set-bg" data-setbg="<?= baseUrl() ?>assets/img/hero/hero-1.jpg">
     <div class="container">
         <div class="row">
@@ -56,10 +42,25 @@ $aStatus = ["1" => "Ativo", "2" => "Inativo", "3" => "Bloqueado"];
                         <td><?= $value['email'] ?></td>
                         <td><?= $aNivel[$value['nivel']] ?></td>                        
                         <td><?= $aStatus[$value['statusRegistro']] ?></td>                        
-                        <td>
-                            <a href="<?= baseUrl() ?>Usuario/form/view/<?= $value['id'] ?>" title="Visualizar">Visualizar</a>
-                            <a href="<?= baseUrl() ?>Usuario/form/update/<?= $value['id'] ?>" title="Alterar">Alterar</a>
-                            <a href="<?= baseUrl() ?>Usuario/form/delete/<?= $value['id'] ?>" title="Excluir">Excluir</a>
+                         <td>
+                            <a href="<?= baseUrl() ?>Usuario/form/view/<?= $value['id'] ?>"
+                                class="btn btn-sm btn-outline-primary me-1"
+                                title="Visualizar">
+                                <i class="bi bi-eye"></i> Visualizar
+                            </a>
+
+                            <a href="<?= baseUrl() ?>Usuario/form/update/<?= $value['id'] ?>"
+                                class="btn btn-sm btn-outline-warning me-1"
+                                title="Alterar">
+                                <i class="bi bi-pencil-square"></i> Alterar
+                            </a>
+
+                            <a href="<?= baseUrl() ?>Usuario/form/delete/<?= $value['id'] ?>"
+                                class="btn btn-sm btn-outline-danger"
+                                title="Excluir"
+                                onclick="return confirm('Tem certeza que deseja excluir este registro?')">
+                                <i class="bi bi-trash"></i> Excluir
+                            </a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

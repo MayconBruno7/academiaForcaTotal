@@ -3,18 +3,6 @@
     use Core\Library\Session;
 ?>
 
-<style>
-.hs-item {
-    width: 100%;
-    height: 25vh; /* Ocupa toda a altura da viewport */
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    display: flex;
-    align-items: center; /* Centraliza verticalmente */
-}
-
-</style>
 <div class="hs-item set-bg" data-setbg="<?= baseUrl() ?>assets/img/hero/hero-1.jpg">
     <div class="container">
         <div class="row">
@@ -28,7 +16,7 @@
 </div>
 <script type="text/javascript" src="<?= baseUrl(); ?>assets/js/usuario.js"></script>
 
-<div class="row bg-primary text-white m-2">
+<div class="row m-2">
     <div class="col-10 p-2">
         <h3>Trocar a Senha</h3>
     </div>

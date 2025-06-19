@@ -1,16 +1,3 @@
-
-<style>
-.hs-item {
-    width: 100%;
-    height: 25vh; /* Ocupa toda a altura da viewport */
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    display: flex;
-    align-items: center; /* Centraliza verticalmente */
-}
-
-</style>
 <div class="hs-item set-bg" data-setbg="<?= baseUrl() ?>assets/img/hero/hero-1.jpg">
     <div class="container">
         <div class="row">

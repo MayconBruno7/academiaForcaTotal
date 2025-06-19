@@ -2,22 +2,23 @@
 
 namespace App\Controller;
 
-use App\Model\PlanoModel;
-use App\Model\UsuarioModel;
+use App\Model\ExercicioModel;
+use App\Model\FichaTreinoModel;
 use Core\Library\ControllerMain;
 use Core\Library\Redirect;
 
-class Professor extends ControllerMain
+class FichaExercicio extends ControllerMain
 {
 
-    protected $usuarioModel;
+    protected $fichaTreinoModel;
+    protected $exercicioModel;
 
     public function __construct()
     {
         $this->auxiliarconstruct();
         $this->loadHelper('formHelper');
-
-        $this->usuarioModel = new UsuarioModel();
+        $this->fichaTreinoModel = new FichaTreinoModel();
+        $this->exercicioModel = new ExercicioModel();
     }
 
     /**
@@ -27,18 +28,18 @@ class Professor extends ControllerMain
      */
     public function index()
     {
-        return $this->loadView("professor/listaProfessor", $this->model->listaProfessor());
-    }
+        return $this->loadView("fichaExercicio/listaFichaExercicio", $this->model->listaFichaExercicio());
+    } 
 
     public function form($action, $id)
     {
-
         $dados = [
-            'aUsuario' => $this->usuarioModel->lista('id'),
-            'data' => $this->model->getById($id),                // Busca Professor       
+            'data' => $this->model->getById($id),  
+            'aFichaTreino' => $this->fichaTreinoModel->listaFichaTreino(),                  
+            'aExercicio' => $this->exercicioModel->listaExercicio(),              
         ];
         
-        return $this->loadView("professor/formProfessor", $dados);
+        return $this->loadView("fichaExercicio/formFichaExercicio", $dados);
     }
 
     /**

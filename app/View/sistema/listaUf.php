@@ -1,16 +1,3 @@
-
-<style>
-.hs-item {
-    width: 100%;
-    height: 25vh; /* Ocupa toda a altura da viewport */
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    display: flex;
-    align-items: center; /* Centraliza verticalmente */
-}
-
-</style>
 <div class="hs-item set-bg" data-setbg="<?= baseUrl() ?>assets/img/hero/hero-1.jpg">
     <div class="container">
         <div class="row">
@@ -44,10 +31,25 @@
                         <th scope="row"><?= $value['id'] ?></th>
                         <td><?= $value['sigla'] ?></td>
                         <td><?= $value['descricao'] ?></td>
-                        <td>
-                            <a href="<?= baseUrl() ?>Uf/form/view/<?= $value['id'] ?>" title="Visualizar">Visualizar</a>
-                            <a href="<?= baseUrl() ?>Uf/form/update/<?= $value['id'] ?>" title="Alterar">Alterar</a>
-                            <a href="<?= baseUrl() ?>Uf/form/delete/<?= $value['id'] ?>" title="Excluir">Excluir</a>
+                         <td>
+                            <a href="<?= baseUrl() ?>Uf/form/view/<?= $value['id'] ?>"
+                                class="btn btn-sm btn-outline-primary me-1"
+                                title="Visualizar">
+                                <i class="bi bi-eye"></i> Visualizar
+                            </a>
+
+                            <a href="<?= baseUrl() ?>Uf/form/update/<?= $value['id'] ?>"
+                                class="btn btn-sm btn-outline-warning me-1"
+                                title="Alterar">
+                                <i class="bi bi-pencil-square"></i> Alterar
+                            </a>
+
+                            <a href="<?= baseUrl() ?>Uf/form/delete/<?= $value['id'] ?>"
+                                class="btn btn-sm btn-outline-danger"
+                                title="Excluir"
+                                onclick="return confirm('Tem certeza que deseja excluir este registro?')">
+                                <i class="bi bi-trash"></i> Excluir
+                            </a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

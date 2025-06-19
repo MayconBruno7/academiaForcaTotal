@@ -5761,10 +5761,15 @@ CREATE TABLE alunos (
 -- 3. Professores
 CREATE TABLE professores (
     id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT NOT NULL,
     nome VARCHAR(100) NOT NULL,
     cpf CHAR(11) UNIQUE NOT NULL,
     telefone VARCHAR(20),
-    email VARCHAR(100)
+    email VARCHAR(100),
+    data_nascimento DATE,
+    especialidade VARCHAR(50),
+    endereco TEXT,
+    CONSTRAINT fk_professor_usuario FOREIGN KEY (usuario_id) REFERENCES usuario(id) ON DELETE CASCADE
 );
 
 -- 4. Fichas de Treino

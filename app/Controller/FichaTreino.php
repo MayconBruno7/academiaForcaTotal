@@ -36,6 +36,7 @@ class FichaTreino extends ControllerMain
         $dados = [
             'data' => $this->model->getById($id),  
             'aAluno' => $this->alunoModel->listaAluno(),               // Busca FichaTreino           
+            'aProfessor' => $this->professorModel->listaProfessor(),               // Busca FichaTreino           
         ];
         
         return $this->loadView("fichaTreino/formFichaTreino", $dados);

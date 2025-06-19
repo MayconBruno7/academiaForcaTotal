@@ -10,7 +10,7 @@
     </div>
 </div>
 
-<?= formTitulo("Lista de Fichas de Treino", true) ?>
+<?= formTitulo("Lista de Exercícios da Ficha", true) ?>
 
 <?php if (count($dados) > 0): ?>
     <div class="m-2">
@@ -18,11 +18,13 @@
             <thead>
                 <tr>
                     <th scope="col">Id</th>
+                    <th scope="col">Ficha ID</th>
                     <th scope="col">Aluno</th>
-                    <th scope="col">Professor</th>
-                    <th scope="col">Data Início</th>
-                    <th scope="col">Validade</th>
-                    <th scope="col">Anotações</th>
+                    <th scope="col">Exercício</th>
+                    <th scope="col">Grupo Muscular</th>
+                    <th scope="col">Séries</th>
+                    <th scope="col">Repetições</th>
+                    <th scope="col">Carga (kg)</th>
                     <th scope="col">Opções</th>
                 </tr>
             </thead>
@@ -30,25 +32,27 @@
                 <?php foreach ($dados as $value): ?>
                     <tr>
                         <th scope="row"><?= $value['id'] ?></th>
-                        <td><?= $value['aluno_nome'] ?></td>
-                        <td><?= $value['professor_nome'] ?></td>
-                        <td><?= $value['data_inicio'] ?></td>
-                        <td><?= $value['validade'] ?></td>
-                        <td><?= $value['anotacoes'] ?></td>
-                        <td>
-                            <a href="<?= baseUrl() ?>FichaTreino/form/view/<?= $value['id'] ?>"
+                        <td><?= $value['ficha_id'] ?></td>
+                        <td><?= $value['aluno_nome'] ?? '-' ?></td>
+                        <td><?= $value['exercicio_nome'] ?></td>
+                        <td><?= $value['grupo_muscular'] ?></td>
+                        <td><?= $value['series'] ?? '-' ?></td>
+                        <td><?= $value['repeticoes'] ?? '-' ?></td>
+                        <td><?= $value['carga'] ?? '-' ?></td>
+                         <td>
+                            <a href="<?= baseUrl() ?>FichaExercicio/form/view/<?= $value['id'] ?>"
                                 class="btn btn-sm btn-outline-primary me-1"
                                 title="Visualizar">
                                 <i class="bi bi-eye"></i> Visualizar
                             </a>
 
-                            <a href="<?= baseUrl() ?>FichaTreino/form/update/<?= $value['id'] ?>"
+                            <a href="<?= baseUrl() ?>FichaExercicio/form/update/<?= $value['id'] ?>"
                                 class="btn btn-sm btn-outline-warning me-1"
                                 title="Alterar">
                                 <i class="bi bi-pencil-square"></i> Alterar
                             </a>
 
-                            <a href="<?= baseUrl() ?>FichaTreino/form/delete/<?= $value['id'] ?>"
+                            <a href="<?= baseUrl() ?>FichaExercicio/form/delete/<?= $value['id'] ?>"
                                 class="btn btn-sm btn-outline-danger"
                                 title="Excluir"
                                 onclick="return confirm('Tem certeza que deseja excluir este registro?')">

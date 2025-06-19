@@ -1,14 +1,8 @@
-<style>
-    .hs-item {
-        width: 100%;
-        height: 25vh;
-        background-size: cover;
-        background-position: center;
-        position: relative;
-        display: flex;
-        align-items: center;
-    }
-</style>
+<?php 
+
+    $aUsuarios = $dados['aUsuario'];
+
+?>
 
 <div class="hs-item set-bg" data-setbg="<?= baseUrl() ?>assets/img/hero/hero-1.jpg">
     <div class="container">
@@ -79,7 +73,20 @@
                     value="<?= setValor("email") ?>">
                 <?= setMsgFilderError("email") ?>
             </div>
-<!-- 
+
+            <div class="col-md-6 mb-3">
+                <label for="usuario_id" class="form-label">Usuário</label>
+                <select class="form-select" name="usuario_id" id="usuario_id" required>
+                    <option value="">Selecione</option>
+                    <?php foreach ($aUsuarios as $usuario): ?>
+                        <option value="<?= $usuario['id'] ?>" <?= setValor("usuario_id") == $usuario['id'] ? 'selected' : '' ?>>
+                            <?= $usuario['nome'] ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+                <?= setMsgFilderError("usuario_id") ?>
+            </div>
+
             <div class="col-md-3 mb-3">
                 <label for="data_nascimento" class="form-label">Data de Nascimento</label>
                 <input type="date"
@@ -88,9 +95,9 @@
                     name="data_nascimento"
                     value="<?= setValor("data_nascimento") ?>">
                 <?= setMsgFilderError("data_nascimento") ?>
-            </div> -->
+            </div>
 
-            <!-- <div class="col-md-3 mb-3">
+            <div class="col-md-3 mb-3">
                 <label for="especialidade" class="form-label">Especialidade</label>
                 <select class="form-select" name="especialidade" id="especialidade" required>
                     <option value="">Selecione</option>
@@ -101,9 +108,9 @@
                     <option value="Natação" <?= setValor("especialidade") == "Natação" ? 'selected' : '' ?>>Natação</option>
                 </select>
                 <?= setMsgFilderError("especialidade") ?>
-            </div> -->
+            </div>
         </div>
-<!-- 
+
         <div class="mb-3">
             <label for="endereco" class="form-label">Endereço</label>
             <textarea class="form-control"
@@ -111,7 +118,7 @@
                 id="endereco"
                 rows="2"><?= setValor("endereco") ?></textarea>
             <?= setMsgFilderError("endereco") ?>
-        </div> -->
+        </div>
 
         <?= formButton() ?>
     </form>
