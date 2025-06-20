@@ -49,39 +49,39 @@ use Core\Library\Session;
         </div> -->
         <nav class="canvas-menu mobile-menu">
             <ul>
-                <li class="active"><a href="<?= baseUrl() ?>">Início</a></li>
-                <!-- <li><a href="#">Quem Somos</a></li>
-                            <li><a href="#">Aulas</a></li>
-                            <li><a href="#">Serviços</a></li> -->
-                <li><a href="<?= baseUrl() ?>#equipe">Nossa Equipe</a></li>
-                <li><a href="<?= baseUrl() ?>home/sobre">Sobre</a></li>
-                <li><a href="<?= baseUrl() ?>home/contato">Contato</a></li>
+                <li class="active"><a class="text-decoration-none" href="<?= baseUrl() ?>">Início</a></li>
+                <!-- <li><a class="text-decoration-none" href="#">Quem Somos</a></li>
+                            <li><a class="text-decoration-none" href="#">Aulas</a></li>
+                            <li><a class="text-decoration-none" href="#">Serviços</a></li> -->
+                <li><a class="text-decoration-none" href="<?= baseUrl() ?>#equipe">Nossa Equipe</a></li>
+                <li><a class="text-decoration-none" href="<?= baseUrl() ?>home/sobre">Sobre</a></li>
+                <li><a class="text-decoration-none" href="<?= baseUrl() ?>home/contato">Contato</a></li>
                 <?php if (Session::get("userId")): ?>
-                    <li><a href="<?= baseUrl() ?>sistema"><?= Session::get('userNome') ?></a>
+                    <li><a class="text-decoration-none" href="<?= baseUrl() ?>sistema"><?= Session::get('userNome') ?></a>
                         <ul class="dropdown">
                             <?php if ((int)Session::get("userNivel") <= 20): ?>
-                                <li><a href="<?= baseUrl() ?>usuario">Usuário</a></li>
-                                <li><a href="<?= baseUrl() ?>acompanhamento">Adicionar acompanhamento</a></li>
-                                <li><a href="<?= baseUrl() ?>aluno">Cadastrar Alunos</a></li>
-                                <li><a href="<?= baseUrl() ?>professor">Cadastrar Professores</a></li>
-                                <li><a href="<?= baseUrl() ?>plano">Cadastrar Planos</a></li>
-                                <li><a href="<?= baseUrl() ?>exercicio">Cadastrar Exercicios</a></li>
-                                <li><a href="<?= baseUrl() ?>fichaTreino">Cadastrar Fichas de treino</a></li>
-                                <li><a href="<?= baseUrl() ?>fichaExercicio">Cadastrar Fichas de exercicio</a></li>
+                                <li><a class="text-decoration-none" href="<?= baseUrl() ?>usuario">Usuário</a></li>
+                                <li><a class="text-decoration-none" href="<?= baseUrl() ?>acompanhamento">Adicionar acompanhamento</a></li>
+                                <li><a class="text-decoration-none" href="<?= baseUrl() ?>aluno">Cadastrar Alunos</a></li>
+                                <li><a class="text-decoration-none" href="<?= baseUrl() ?>professor">Cadastrar Professores</a></li>
+                                <li><a class="text-decoration-none" href="<?= baseUrl() ?>plano">Cadastrar Planos</a></li>
+                                <li><a class="text-decoration-none" href="<?= baseUrl() ?>exercicio">Cadastrar Exercicios</a></li>
+                                <li><a class="text-decoration-none" href="<?= baseUrl() ?>fichaTreino">Cadastrar Fichas de treino</a></li>
+                                <li><a class="text-decoration-none" href="<?= baseUrl() ?>fichaExercicio">Cadastrar Fichas de exercicio</a></li>
 
-                                <li><a href="<?= baseUrl() ?>uf">UF</a></li>
-                                <li><a href="<?= baseUrl() ?>cidade">Cidade</a></li>
+                                <li><a class="text-decoration-none" href="<?= baseUrl() ?>uf">UF</a></li>
+                                <li><a class="text-decoration-none" href="<?= baseUrl() ?>cidade">Cidade</a></li>
                                 <div class="divider">
                                     <span>ou</span>
                                 </div>
                             <?php endif; ?>
 
-                            <li><a href="<?= baseUrl() ?>aluno/meuPlano">Meu plano</a></li>
-                            <li><a href="<?= baseUrl() ?>aluno/meuAcompanhamento">Meus acompanhamentos</a></li>
-                            <li><a href="<?= baseUrl() ?>aluno/minhaFicha">Minha ficha</a></li>
-                            <li><a href="<?= baseUrl() ?>aluno/meuExercicio">Meus exercicios</a></li>
-                            <li><a href="<?= baseUrl() ?>Usuario/formTrocarSenha">Trocar senha</a></li>
-                            <li><a href="<?= baseUrl() ?>login/signOut">Sair</a></li>
+                            <li><a class="text-decoration-none" href="<?= baseUrl() ?>aluno/meuPlano">Meu plano</a></li>
+                            <li><a class="text-decoration-none" href="<?= baseUrl() ?>aluno/meuAcompanhamento">Meus acompanhamentos</a></li>
+                            <li><a class="text-decoration-none" href="<?= baseUrl() ?>aluno/minhaFicha">Minha ficha</a></li>
+                            <li><a class="text-decoration-none" href="<?= baseUrl() ?>aluno/meuExercicio">Meus exercicios</a></li>
+                            <li><a class="text-decoration-none" href="<?= baseUrl() ?>Usuario/formTrocarSenha">Trocar senha</a></li>
+                            <li><a class="text-decoration-none" href="<?= baseUrl() ?>login/signOut">Sair</a></li>
                         </ul>
                     </li>
                 <?php else: ?>
@@ -94,12 +94,12 @@ use Core\Library\Session;
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
-        <div class="canvas-social">
-            <a href="#"><i class="fa fa-facebook"></i></a>
-            <a href="#"><i class="fa fa-twitter"></i></a>
-            <a href="#"><i class="fa fa-youtube-play"></i></a>
-            <a href="#"><i class="fa fa-instagram"></i></a>
-        </div>
+        <!-- <div class="canvas-social">
+            <a class="text-decoration-none" href="#"><i class="fa fa-facebook"></i></a>
+            <a class="text-decoration-none" href="#"><i class="fa fa-twitter"></i></a>
+            <a class="text-decoration-none" href="#"><i class="fa fa-youtube-play"></i></a>
+            <a class="text-decoration-none" href="#"><i class="fa fa-instagram"></i></a>
+        </div> -->
     </div>
     <!-- Fim do Menu Offcanvas -->
 
@@ -108,48 +108,52 @@ use Core\Library\Session;
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-3">
-                    <!-- <div class="logo">
-                        <a href="<?= baseUrl() ?>">
-                            <img src="<?= baseUrl() ?>assets/img/logo.png" alt="Logo da Academia">
+                    <div class="logo">
+                        <a class="text-decoration-none" href="<?= baseUrl() ?>">
+                            <img
+                            src="<?= baseUrl() ?>assets/img/logo.png"
+                            alt="Logo da Academia"
+                            style="width: 180px; height:200px; object-fit: contain; padding: 8px 0; margin-bottom: 10px;">
+
                         </a>
-                    </div> -->
+                    </div>
                 </div>
                 <div class="col-lg-6">
                     <nav class="nav-menu">
                         <ul>
-                            <li class="active"><a href="<?= baseUrl() ?>">Início</a></li>
-                            <!-- <li><a href="#">Quem Somos</a></li>
-                            <li><a href="#">Aulas</a></li>
-                            <li><a href="#">Serviços</a></li> -->
-                            <li><a href="<?= baseUrl() ?>#equipe">Nossa Equipe</a></li>
-                            <li><a href="<?= baseUrl() ?>home/sobre">Sobre</a></li>
-                            <li><a href="<?= baseUrl() ?>home/contato">Contato</a></li>
+                            <li class="active"><a class="text-decoration-none" href="<?= baseUrl() ?>">Início</a></li>
+                            <!-- <li><a class="text-decoration-none" href="#">Quem Somos</a></li>
+                            <li><a class="text-decoration-none" href="#">Aulas</a></li>
+                            <li><a class="text-decoration-none" href="#">Serviços</a></li> -->
+                            <li><a class="text-decoration-none" href="<?= baseUrl() ?>#equipe">Nossa Equipe</a></li>
+                            <li><a class="text-decoration-none" href="<?= baseUrl() ?>home/sobre">Sobre</a></li>
+                            <li><a class="text-decoration-none" href="<?= baseUrl() ?>home/contato">Contato</a></li>
                             <?php if (Session::get("userId")): ?>
-                                <li><a href="<?= baseUrl() ?>sistema"><?= Session::get('userNome') ?></a>
+                                <li><a class="text-decoration-none" href="<?= baseUrl() ?>sistema"><?= Session::get('userNome') ?></a>
                                     <ul class="dropdown">
                                         <?php if ((int)Session::get("userNivel") <= 20): ?>
-                                            <li><a href="<?= baseUrl() ?>usuario">Usuário</a></li>
-                                            <li><a href="<?= baseUrl() ?>acompanhamento">Adicionar acompanhamento</a></li>
-                                            <li><a href="<?= baseUrl() ?>aluno">Cadastrar Alunos</a></li>
-                                            <li><a href="<?= baseUrl() ?>professor">Cadastrar Professores</a></li>
-                                            <li><a href="<?= baseUrl() ?>plano">Cadastrar Planos</a></li>
-                                            <li><a href="<?= baseUrl() ?>exercicio">Cadastrar Exercicios</a></li>
-                                            <li><a href="<?= baseUrl() ?>fichaTreino">Cadastrar Fichas de treino</a></li>
-                                            <li><a href="<?= baseUrl() ?>fichaExercicio">Cadastrar Fichas de exercicio</a></li>
+                                            <li><a class="text-decoration-none" href="<?= baseUrl() ?>usuario">Usuário</a></li>
+                                            <li><a class="text-decoration-none" href="<?= baseUrl() ?>acompanhamento">Adicionar acompanhamento</a></li>
+                                            <li><a class="text-decoration-none" href="<?= baseUrl() ?>aluno">Cadastrar Alunos</a></li>
+                                            <li><a class="text-decoration-none" href="<?= baseUrl() ?>professor">Cadastrar Professores</a></li>
+                                            <li><a class="text-decoration-none" href="<?= baseUrl() ?>plano">Cadastrar Planos</a></li>
+                                            <li><a class="text-decoration-none" href="<?= baseUrl() ?>exercicio">Cadastrar Exercicios</a></li>
+                                            <li><a class="text-decoration-none" href="<?= baseUrl() ?>fichaTreino">Cadastrar Fichas de treino</a></li>
+                                            <li><a class="text-decoration-none" href="<?= baseUrl() ?>fichaExercicio">Cadastrar Fichas de exercicio</a></li>
 
-                                            <li><a href="<?= baseUrl() ?>uf">UF</a></li>
-                                            <li><a href="<?= baseUrl() ?>cidade">Cidade</a></li>
+                                            <li><a class="text-decoration-none" href="<?= baseUrl() ?>uf">UF</a></li>
+                                            <li><a class="text-decoration-none" href="<?= baseUrl() ?>cidade">Cidade</a></li>
                                             <div class="divider">
                                                 <span>ou</span>
                                             </div>
                                         <?php endif; ?>
 
-                                        <li><a href="<?= baseUrl() ?>aluno/meuPlano">Meu plano</a></li>
-                                        <li><a href="<?= baseUrl() ?>aluno/meuAcompanhamento">Meus acompanhamentos</a></li>
-                                        <li><a href="<?= baseUrl() ?>aluno/minhaFicha">Minha ficha</a></li>
-                                        <li><a href="<?= baseUrl() ?>aluno/meuExercicio">Meus exercicios</a></li>
-                                        <li><a href="<?= baseUrl() ?>Usuario/formTrocarSenha">Trocar senha</a></li>
-                                        <li><a href="<?= baseUrl() ?>login/signOut">Sair</a></li>
+                                        <li><a class="text-decoration-none" href="<?= baseUrl() ?>aluno/meuPlano">Meu plano</a></li>
+                                        <li><a class="text-decoration-none" href="<?= baseUrl() ?>aluno/meuAcompanhamento">Meus acompanhamentos</a></li>
+                                        <li><a class="text-decoration-none" href="<?= baseUrl() ?>aluno/minhaFicha">Minha ficha</a></li>
+                                        <li><a class="text-decoration-none" href="<?= baseUrl() ?>aluno/meuExercicio">Meus exercicios</a></li>
+                                        <li><a class="text-decoration-none" href="<?= baseUrl() ?>Usuario/formTrocarSenha">Trocar senha</a></li>
+                                        <li><a class="text-decoration-none" href="<?= baseUrl() ?>login/signOut">Sair</a></li>
                                     </ul>
                                 </li>
                             <?php else: ?>
@@ -167,12 +171,12 @@ use Core\Library\Session;
                         <!-- <div class="to-search search-switch">
                             <i class="fa fa-search"></i>
                         </div> -->
-                        <div class="to-social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-youtube-play"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                        </div>
+                        <!-- <div class="to-social">
+                            <a class="text-decoration-none" href="#"><i class="fa fa-facebook"></i></a>
+                            <a class="text-decoration-none" href="#"><i class="fa fa-twitter"></i></a>
+                            <a class="text-decoration-none" href="#"><i class="fa fa-youtube-play"></i></a>
+                            <a class="text-decoration-none" href="#"><i class="fa fa-instagram"></i></a>
+                        </div> -->
                     </div>
                 </div>
             </div>

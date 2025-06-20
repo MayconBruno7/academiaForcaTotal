@@ -181,17 +181,17 @@ $aProfessor = $dados['aProfessor'];
         <div class="row">
             <div class="ts-slider owl-carousel">
                 <?php foreach ($aProfessor as $value) : ?>
-                    <div class="col-lg-4">
-                        <div class="ts-item set-bg" data-setbg="<?= baseUrl() . 'imagem.php?file=professor/' . $value['imagem'] ?>">
-                            <div class="ts_text">
-                                <h4><?= $value['nome'] ?></h4>
-                                <span><?= $value['especialidade'] ?></span>
-                            </div>
+                    <div class="ts-item set-bg"
+                        data-setbg="<?= baseUrl() . 'imagem.php?file=professor/' . $value['imagem'] ?>"
+                        style="margin: 0 10px; width: 320px;">
+                        <div class="ts_text">
+                            <h4><?= $value['nome'] ?></h4>
+                            <span><?= $value['especialidade'] ?></span>
                         </div>
                     </div>
                 <?php endforeach; ?>
             </div>
-
         </div>
+
     </div>
 </section>

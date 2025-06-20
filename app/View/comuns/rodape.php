@@ -35,27 +35,31 @@
             <div class="col-lg-4">
                 <div class="fs-about">
                     <div class="fa-logo">
-                        <a href="#"><img src="img/logo.png" alt=""></a>
+                        <img
+                            src="<?= baseUrl() ?>assets/img/logo.png"
+                            alt="Logo da Academia"
+                            style="width: 180px; height:200px; object-fit: contain; padding: 8px 0;">
+
                     </div>
                     <p>
                         A prática regular de exercícios físicos em uma academia é essencial para melhorar a saúde, aumentar a disposição e alcançar o bem-estar. Seja para ganhar massa muscular, perder peso ou simplesmente manter o corpo ativo, treinar com acompanhamento profissional faz toda a diferença. Na academia, você encontra estrutura adequada, orientação personalizada e um ambiente que motiva você a superar seus limites todos os dias.
                     </p>
 
-                    <div class="fa-social">
+                    <!-- <div class="fa-social">
                         <a href="#"><i class="fa fa-facebook"></i></a>
                         <a href="#"><i class="fa fa-twitter"></i></a>
                         <a href="#"><i class="fa fa-youtube-play"></i></a>
                         <a href="#"><i class="fa fa-instagram"></i></a>
                         <a href="#"><i class="fa fa-envelope-o"></i></a>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="col-lg-2 col-md-3 col-sm-6">
                 <div class="fs-widget">
                     <h4>Links Úteis</h4>
                     <ul>
-                        <li><a href="<?= baseUrl() ?>home/sobre">Sobre</a></li>
-                        <li><a href="<?= baseUrl() ?>home/contato">Contato</a></li>
+                        <li><a class="text-decoration-none" href="<?= baseUrl() ?>home/sobre">Sobre</a></li>
+                        <li><a class="text-decoration-none" href="<?= baseUrl() ?>home/contato">Contato</a></li>
                     </ul>
                 </div>
             </div>
@@ -63,8 +67,8 @@
                 <div class="fs-widget">
                     <h4>Suporte</h4>
                     <ul>
-                        <li><a href="<?= baseUrl() ?>login">Entrar</a></li>
-                        <li><a href="<?= baseUrl() ?>#planos">Assinar</a></li>
+                        <li><a class="text-decoration-none" href="<?= baseUrl() ?>login">Entrar</a></li>
+                        <li><a class="text-decoration-none" href="<?= baseUrl() ?>#planos">Assinar</a></li>
                         <li><a href="javascript:enviarWhatsapp('Olá, Preciso de suporte!')" class="text-decoration-none">Falar com atendente</a></li>
                     </ul>
                 </div>
@@ -111,16 +115,6 @@
 </section>
 <!-- Seção Rodapé Fim -->
 
-<!-- Modelo de busca Início -->
-<div class="search-model">
-    <div class="h-100 d-flex align-items-center justify-content-center">
-        <div class="search-close-switch">+</div>
-        <form class="search-model-form">
-            <input type="text" id="search-input" placeholder="Pesquise aqui.....">
-        </form>
-    </div>
-</div>
-<!-- Modelo de busca Fim -->
 
 <!-- Plugins Js -->
 
