@@ -5,22 +5,22 @@
             <div class="col-md-4">
                 <div class="gt-text">
                     <i class="fa fa-map-marker"></i>
-                    <p>333 Middle Winchendon Rd, Rindge,<br/> NH 03461</p>
+                    <p>R. Dr. Antônio Canedo, 41 – Centro<br />Muriaé – MG</p>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="gt-text">
                     <i class="fa fa-mobile"></i>
                     <ul>
-                        <li>125-711-811</li>
-                        <li>125-668-886</li>
+                        <li>(32) 998055493</li>
+                        <!-- <li></li> -->
                     </ul>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="gt-text email">
                     <i class="fa fa-envelope"></i>
-                    <p>Support.gymcenter@gmail.com</p>
+                    <p>muriaegym@gmail.com</p>
                 </div>
             </div>
         </div>
@@ -37,8 +37,10 @@
                     <div class="fa-logo">
                         <a href="#"><img src="img/logo.png" alt=""></a>
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore dolore magna aliqua endisse ultrices gravida lorem.</p>
+                    <p>
+                        A prática regular de exercícios físicos em uma academia é essencial para melhorar a saúde, aumentar a disposição e alcançar o bem-estar. Seja para ganhar massa muscular, perder peso ou simplesmente manter o corpo ativo, treinar com acompanhamento profissional faz toda a diferença. Na academia, você encontra estrutura adequada, orientação personalizada e um ambiente que motiva você a superar seus limites todos os dias.
+                    </p>
+
                     <div class="fa-social">
                         <a href="#"><i class="fa fa-facebook"></i></a>
                         <a href="#"><i class="fa fa-twitter"></i></a>
@@ -52,10 +54,8 @@
                 <div class="fs-widget">
                     <h4>Links Úteis</h4>
                     <ul>
-                        <li><a href="#">Sobre</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Aulas</a></li>
-                        <li><a href="#">Contato</a></li>
+                        <li><a href="<?= baseUrl() ?>home/sobre">Sobre</a></li>
+                        <li><a href="<?= baseUrl() ?>home/contato">Contato</a></li>
                     </ul>
                 </div>
             </div>
@@ -63,38 +63,47 @@
                 <div class="fs-widget">
                     <h4>Suporte</h4>
                     <ul>
-                        <li><a href="#">Entrar</a></li>
-                        <li><a href="#">Minha conta</a></li>
-                        <li><a href="#">Assinar</a></li>
-                        <li><a href="#">Contato</a></li>
+                        <li><a href="<?= baseUrl() ?>login">Entrar</a></li>
+                        <li><a href="<?= baseUrl() ?>#planos">Assinar</a></li>
+                        <li><a href="javascript:enviarWhatsapp('Olá, Preciso de suporte!')" class="text-decoration-none">Falar com atendente</a></li>
                     </ul>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6">
                 <div class="fs-widget">
-                    <h4>Dicas & Guias</h4>
+                    <h4>Dicas</h4>
+
                     <div class="fw-recent">
-                        <h6><a href="#">A boa forma física pode ajudar a prevenir depressão, ansiedade</a></h6>
-                        <ul>
-                            <li>3 min de leitura</li>
-                            <li>20 Comentários</li>
-                        </ul>
+                        <h6><a href="#">Pratique exercícios físicos regularmente para reduzir sintomas de ansiedade e depressão.</a></h6>
                     </div>
+
                     <div class="fw-recent">
-                        <h6><a href="#">Fitness: O melhor exercício para perder gordura abdominal e tonificar...</a></h6>
-                        <ul>
-                            <li>3 min de leitura</li>
-                            <li>20 Comentários</li>
-                        </ul>
+                        <h6><a href="#">Inclua treinos de alta intensidade com abdominais para queimar gordura abdominal e definir o core.</a></h6>
+                    </div>
+
+                    <div class="fw-recent">
+                        <h6><a href="#">Descanse bem entre os treinos – o crescimento muscular acontece durante o repouso.</a></h6>
+                    </div>
+
+                    <div class="fw-recent">
+                        <h6><a href="#">Nunca pule o treino de pernas: ele fortalece o corpo todo e melhora o desempenho nos outros exercícios.</a></h6>
+                    </div>
+
+                    <div class="fw-recent">
+                        <h6><a href="#">Alimente-se corretamente antes e depois do treino para garantir energia e recuperação muscular.</a></h6>
                     </div>
                 </div>
             </div>
+
+
         </div>
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="copyright-text">
-                    <p><!-- Link para Colorlib não pode ser removido. Template licenciado sob CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos os direitos reservados </p>
+                    <p>
+                        Copyright &copy;<script>
+                            document.write(new Date().getFullYear());
+                        </script> Todos os direitos reservados </p>
                 </div>
             </div>
         </div>
@@ -114,7 +123,7 @@
 <!-- Modelo de busca Fim -->
 
 <!-- Plugins Js -->
-<script src="<?= baseUrl() ?>assets/js/jquery-3.3.1.min.js"></script>
+
 <script src="<?= baseUrl() ?>assets/js/bootstrap.min.js"></script>
 <script src="<?= baseUrl() ?>assets/js/jquery.magnific-popup.min.js"></script>
 <script src="<?= baseUrl() ?>assets/js/masonry.pkgd.min.js"></script>

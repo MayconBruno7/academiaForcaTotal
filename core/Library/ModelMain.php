@@ -65,6 +65,7 @@ class ModelMain
         
             return 0;
         } else {
+            // exit('opa');
             if ($this->db->insert($dados) > 0) {
                 return true;
             } else {

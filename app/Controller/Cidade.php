@@ -8,7 +8,7 @@ use Core\Library\Redirect;
 
 class Cidade extends ControllerMain
 {
-    
+
     public function __construct()
     {
         $this->auxiliarconstruct();
@@ -22,18 +22,25 @@ class Cidade extends ControllerMain
      */
     public function index()
     {
+        if (!verificaSeUsuarioEstaLogado()) {
+            return Redirect::page('login');
+        }
+
         return $this->loadView("sistema/listaCidade", $this->model->listaCidade());
     }
 
     public function form($action, $id)
     {
+        if (!verificaSeUsuarioEstaLogado()) {
+            return Redirect::page('login');
+        }
         $UfModel = new UfModel();
 
         $dados = [
             'data' => $this->model->getById($id),               // Busca Cidade
             'aUf' => $UfModel->lista("sigla")                   // Busca UFs a serem exibidas na combobox
         ];
-        
+
         return $this->loadView("sistema/formCidade", $dados);
     }
 

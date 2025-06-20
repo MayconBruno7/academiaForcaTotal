@@ -38,7 +38,52 @@ class ControllerMain
 
         // carregar helper padrão
         $this->loadHelper(["formulario", "utilits"]);
+
+        if (substr($this->controller, 0, 3) !== "Api") {
+
+            // Se não for um controller público (autenticado)
+            if (!in_array($this->controller, CONTROLLER_AUTH)) {
+
+                // Se não for o método de acesso permitido publicamente de Plano ou Professor
+                $liberadoSemLogin = !(
+                    ($this->controller === 'Plano' && $this->method === 'listaPlano') ||
+                    ($this->controller === 'Professor' && $this->method === 'listaProfessor')
+                );
+
+                // Se for um controller que exige login, mas o usuário não está logado
+                if ($liberadoSemLogin && !Session::get("userId")) {
+                    Session::set('msgError', "Para acessar a rotina, favor efetuar o login.");
+                    return Redirect::page("login");
+                }
+
+                $liberadoAluno = !(
+                    $this->controller === 'Aluno' || $this->controller === 'Sistema' || $this->controller === 'Usuario' &&
+                    in_array($this->method, ['meuPlano', 'meuAcompanhamento', 'minhaFicha', 'meuExercicio', 'index', 'formTrocarSenha'])
+                );
+
+                // Apenas usuários com nível 20 ou menos podem acessar os métodos liberados do aluno
+                if ($liberadoAluno && Session::get("userNivel") > 20) {
+                    Session::set('msgError', "Você não possui permissão neste programa!");
+                    return Redirect::page("login");
+                }
+            }
+        }
     }
+
+    /**
+     * validaNivelAcesso
+     *
+     * @param int $nivelMinino 
+     * @return void
+     */
+    public function validaNivelAcesso(int $nivelMinino = 20)
+    {
+        if (!((int)Session::get("userNivel") <= $nivelMinino)) {
+            return Redirect::page("sistema", ["msgError" => "Você não possui permissão neste programa"]);
+            exit;
+        }
+    }
+
 
     /**
      * loadModel
@@ -49,7 +94,7 @@ class ControllerMain
     public function loadModel($nomeModel)
     {
         $pathModel = "App\Model\\" . $nomeModel . "Model";
-        
+
         if (class_exists($pathModel)) {
             return new $pathModel();
         }
@@ -67,9 +112,9 @@ class ControllerMain
             $nomeHelper = [$nomeHelper];
         }
 
-        foreach ($nomeHelper AS $value) {
+        foreach ($nomeHelper as $value) {
             $pathHelperAtom = ".." . DIRECTORY_SEPARATOR . "core" . DIRECTORY_SEPARATOR . "Helper" . DIRECTORY_SEPARATOR . "{$value}.php";
-            
+
             if (file_exists($pathHelperAtom)) {
                 require_once $pathHelperAtom;
             } else {
@@ -78,7 +123,7 @@ class ControllerMain
                 if (file_exists($pathHelperUser)) {
                     require_once $pathHelperUser;
                 }
-            }        
+            }
         }
     }
 
@@ -107,13 +152,13 @@ class ControllerMain
 
         // Será utilizado para recuperar valores e preencher o formulário
         if (isset($dados['data'])) {
-			$_POST = $dados['data'];
-		} else {
-			if (count($dados) > 0) {
-				$_POST = $dados;
-			}
-		}
-        
+            $_POST = $dados['data'];
+        } else {
+            if (count($dados) > 0) {
+                $_POST = $dados;
+            }
+        }
+
         // Será utilizado futuramente para recuperar valores quando idenficado
         if (Session::get("errors") != false) {
             $_POST['formErrors'] = Session::getDestroy('errors');

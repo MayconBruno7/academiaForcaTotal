@@ -3,25 +3,41 @@
 
 namespace App\Controller;
 
+use App\Model\PlanoModel;
+use App\Model\ProfessorModel;
 use Core\Library\ControllerMain;
 
 class Home extends ControllerMain
 {
+
+    protected $planoModel;
+    protected $professorModel;
+
+    public function __construct()
+    {
+        $this->auxiliarconstruct();
+        $this->planoModel = new PlanoModel();
+        $this->professorModel = new ProfessorModel();
+    }
+
     public function index()
     {
-        $this->loadView("home");
+        $dados = [ 
+            'aPlano' => $this->planoModel->listaPlano(),               // Busca FichaTreino           
+            'aProfessor' => $this->professorModel->listaProfessor(),               // Busca FichaTreino           
+        ];
+
+        return $this->loadView("home", $dados);
     }
 
     public function sobre($action = null)
     {
-        echo "Página sobre nós. AÇÃO: {$action}";
+        return $this->loadView("sobre");
     }
 
-    public function detalhes($action = null, $id = null, ...$params)
+    public function contato($action = null)
     {
-        echo "Detalhes: <br />";
-        echo "<br />Ação: " . $action;
-        echo "<br />ID: " . $id;
-        echo "<br />PARÂMETROS: " . implode(", ", $params);
+        return $this->loadView("contato");
     }
+
 }

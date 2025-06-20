@@ -16,7 +16,9 @@
 
 <form method="POST" action="<?= $this->request->formAction() ?>">
 
-    <input type="hidden" name="id" id="id" value="<?= setValor('id') ?>">
+    <?php if (setValor("id") != "" && setValor("id") != "0"): ?>
+        <input type="hidden" name="id" id="id" value="<?= setValor("id") ?>">
+    <?php endif; ?>
 
     <div class="row m-2">
 
@@ -29,10 +31,10 @@
         <div class="mb-3 col-4">
             <label for="nivel" class="form-label">Nível</label>
             <select class="form-select" name="nivel" id="nivel" aria-label="Large select nivel" required>
-                <option value="0"  <?= (setValor('nivel') == ""   ? 'selected': "") ?>>...</option>
-                <option value="1"  <?= (setValor('nivel') == "1"  ? 'selected': "") ?>>Super Administrador</option>
-                <option value="11" <?= (setValor('nivel') == "11" ? 'selected': "") ?>>Administrador</option>
-                <option value="21" <?= (setValor('nivel') == "21" ? 'selected': "") ?>>Usuário</option>
+                <option value="0" <?= (setValor('nivel') == ""   ? 'selected' : "") ?>>...</option>
+                <option value="1" <?= (setValor('nivel') == "1"  ? 'selected' : "") ?>>Super Administrador</option>
+                <option value="11" <?= (setValor('nivel') == "11" ? 'selected' : "") ?>>Administrador</option>
+                <option value="21" <?= (setValor('nivel') == "21" ? 'selected' : "") ?>>Aluno</option>
             </select>
             <?= setMsgFilderError('tipo') ?>
         </div>
@@ -46,9 +48,9 @@
         <div class="mb-3 col-4">
             <label for="statusRegistro" class="form-label">Status</label>
             <select class="form-select" name="statusRegistro" id="statusRegistro" aria-label="Large select statusRegistro" required>
-                <option value="0" <?= (setValor('statusRegistro') == ""  ? 'selected': "") ?>>...</option>
-                <option value="1" <?= (setValor('statusRegistro') == "1" ? 'selected': "") ?>>Ativo</option>
-                <option value="2" <?= (setValor('statusRegistro') == "2" ? 'selected': "") ?>>Inativo</option>
+                <option value="0" <?= (setValor('statusRegistro') == ""  ? 'selected' : "") ?>>...</option>
+                <option value="1" <?= (setValor('statusRegistro') == "1" ? 'selected' : "") ?>>Ativo</option>
+                <option value="2" <?= (setValor('statusRegistro') == "2" ? 'selected' : "") ?>>Inativo</option>
             </select>
             <?= setMsgFilderError('statusRegistro') ?>
         </div>
@@ -57,7 +59,7 @@
 
             <div class="mb-3 col-6">
                 <label for="senha" class="form-label">Senha</label>
-                <input type="password" class="form-control" id="senha" name="senha" 
+                <input type="password" class="form-control" id="senha" name="senha"
                     placeholder="Informe uma senha" maxlength="60"
                     onkeyup="checa_segur_senha('senha', 'msgSenha', 'btEnviar');"
                     <?= ($this->request->getAction() == "insert" ? 'required' : '') ?>>
@@ -67,8 +69,8 @@
 
             <div class="mb-3 col-6">
                 <label for="confSenha" class="form-label">Confirma a Senha</label>
-                <input type="password" class="form-control" id="confSenha" name="confSenha" 
-                    placeholder="Digite a senha para conferência" maxlength="60" 
+                <input type="password" class="form-control" id="confSenha" name="confSenha"
+                    placeholder="Digite a senha para conferência" maxlength="60"
                     onkeyup="checa_segur_senha('confSenha', 'msgConfSenha', 'btEnviar');"
                     <?= ($this->request->getAction() == "insert" ? 'required' : '') ?>>
                 <div id="msgConfSenha" class="mt-3"></div>

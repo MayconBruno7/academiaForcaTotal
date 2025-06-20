@@ -21,7 +21,7 @@
         <h3>Trocar a Senha</h3>
     </div>
     <div class="col-2 text-end p-2">
-        <a href="<?=  baseUrl() ?>" title="Voltar" class="btn btn-outline-info text-white">Voltar</a>
+        <a href="<?=  baseUrl() ?>" title="Voltar" class="btn btn-outline-info">Voltar</a>
     </div>
 </div>
 

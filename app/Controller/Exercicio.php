@@ -22,11 +22,17 @@ class Exercicio extends ControllerMain
      */
     public function index()
     {
+             if (!verificaSeUsuarioEstaLogado()) {
+            return Redirect::page('login');
+        }
         return $this->loadView("exercicio/listaExercicio", $this->model->listaExercicio());
     }
 
     public function form($action, $id)
     {
+             if (!verificaSeUsuarioEstaLogado()) {
+            return Redirect::page('login');
+        }
 
         $dados = [
             'data' => $this->model->getById($id),                // Busca Exercicio       

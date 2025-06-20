@@ -13,6 +13,8 @@ use Core\Library\Session;
     <meta name="keywords" content="Academia, única, criativo, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/png" href="<?= baseUrl() ?>assets/img/logo.png">
+
     <title>Academia | Força Total</title>
 
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
@@ -26,6 +28,8 @@ use Core\Library\Session;
     <link rel="stylesheet" href="<?= baseUrl() ?>assets/css/magnific-popup.css" type="text/css">
     <link rel="stylesheet" href="<?= baseUrl() ?>assets/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="<?= baseUrl() ?>assets/css/style.css" type="text/css">
+
+    <script src="<?= baseUrl() ?>assets/js/jquery-3.3.1.min.js"></script>
 </head>
 
 <body>
@@ -40,34 +44,50 @@ use Core\Library\Session;
         <div class="canvas-close">
             <i class="fa fa-close"></i>
         </div>
-        <div class="canvas-search search-switch">
+        <!-- <div class="canvas-search search-switch">
             <i class="fa fa-search"></i>
-        </div>
+        </div> -->
         <nav class="canvas-menu mobile-menu">
             <ul>
-                <li><a href="<?= baseUrl() ?>">Início</a></li>
-                <li><a href="#">Quem Somos</a></li>
-                <li><a href="#">Aulas</a></li>
-                <li><a href="#">Serviços</a></li>
-                <li><a href="#">Nossa Equipe</a></li>
+                <li class="active"><a href="<?= baseUrl() ?>">Início</a></li>
+                <!-- <li><a href="#">Quem Somos</a></li>
+                            <li><a href="#">Aulas</a></li>
+                            <li><a href="#">Serviços</a></li> -->
+                <li><a href="<?= baseUrl() ?>#equipe">Nossa Equipe</a></li>
+                <li><a href="<?= baseUrl() ?>home/sobre">Sobre</a></li>
+                <li><a href="<?= baseUrl() ?>home/contato">Contato</a></li>
                 <?php if (Session::get("userId")): ?>
-                    <li><a href="#">Área Administrativa</a>
+                    <li><a href="<?= baseUrl() ?>sistema"><?= Session::get('userNome') ?></a>
                         <ul class="dropdown">
-                            <li><a href="#">Quem Somos</a></li>
                             <?php if ((int)Session::get("userNivel") <= 20): ?>
                                 <li><a href="<?= baseUrl() ?>usuario">Usuário</a></li>
+                                <li><a href="<?= baseUrl() ?>acompanhamento">Adicionar acompanhamento</a></li>
+                                <li><a href="<?= baseUrl() ?>aluno">Cadastrar Alunos</a></li>
+                                <li><a href="<?= baseUrl() ?>professor">Cadastrar Professores</a></li>
+                                <li><a href="<?= baseUrl() ?>plano">Cadastrar Planos</a></li>
+                                <li><a href="<?= baseUrl() ?>exercicio">Cadastrar Exercicios</a></li>
+                                <li><a href="<?= baseUrl() ?>fichaTreino">Cadastrar Fichas de treino</a></li>
+                                <li><a href="<?= baseUrl() ?>fichaExercicio">Cadastrar Fichas de exercicio</a></li>
+
+                                <li><a href="<?= baseUrl() ?>uf">UF</a></li>
+                                <li><a href="<?= baseUrl() ?>cidade">Cidade</a></li>
+                                <div class="divider">
+                                    <span>ou</span>
+                                </div>
                             <?php endif; ?>
+
+                            <li><a href="<?= baseUrl() ?>aluno/meuPlano">Meu plano</a></li>
+                            <li><a href="<?= baseUrl() ?>aluno/meuAcompanhamento">Meus acompanhamentos</a></li>
+                            <li><a href="<?= baseUrl() ?>aluno/minhaFicha">Minha ficha</a></li>
+                            <li><a href="<?= baseUrl() ?>aluno/meuExercicio">Meus exercicios</a></li>
                             <li><a href="<?= baseUrl() ?>Usuario/formTrocarSenha">Trocar senha</a></li>
-                            <li><a href="<?= baseUrl() ?>uf">UF</a></li>
-                            <li><a href="<?= baseUrl() ?>cidade">Cidade</a></li>
-                            <li><a href="#">Nosso Blog</a></li>
                             <li><a href="<?= baseUrl() ?>login/signOut">Sair</a></li>
                         </ul>
                     </li>
                 <?php else: ?>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= baseUrl() ?>Login">Área Restrita</a>
+                        <a class="nav-link" href="<?= baseUrl() ?>Login">Entrar</a>
                     </li>
 
                 <?php endif; ?>
@@ -88,11 +108,11 @@ use Core\Library\Session;
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-3">
-                    <div class="logo">
+                    <!-- <div class="logo">
                         <a href="<?= baseUrl() ?>">
                             <img src="<?= baseUrl() ?>assets/img/logo.png" alt="Logo da Academia">
                         </a>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="col-lg-6">
                     <nav class="nav-menu">
@@ -101,13 +121,15 @@ use Core\Library\Session;
                             <!-- <li><a href="#">Quem Somos</a></li>
                             <li><a href="#">Aulas</a></li>
                             <li><a href="#">Serviços</a></li> -->
-                            <li><a href="#">Nossa Equipe</a></li>
+                            <li><a href="<?= baseUrl() ?>#equipe">Nossa Equipe</a></li>
+                            <li><a href="<?= baseUrl() ?>home/sobre">Sobre</a></li>
+                            <li><a href="<?= baseUrl() ?>home/contato">Contato</a></li>
                             <?php if (Session::get("userId")): ?>
-                                <li><a href="#">Administrativa</a>
+                                <li><a href="<?= baseUrl() ?>sistema"><?= Session::get('userNome') ?></a>
                                     <ul class="dropdown">
-
                                         <?php if ((int)Session::get("userNivel") <= 20): ?>
                                             <li><a href="<?= baseUrl() ?>usuario">Usuário</a></li>
+                                            <li><a href="<?= baseUrl() ?>acompanhamento">Adicionar acompanhamento</a></li>
                                             <li><a href="<?= baseUrl() ?>aluno">Cadastrar Alunos</a></li>
                                             <li><a href="<?= baseUrl() ?>professor">Cadastrar Professores</a></li>
                                             <li><a href="<?= baseUrl() ?>plano">Cadastrar Planos</a></li>
@@ -117,7 +139,15 @@ use Core\Library\Session;
 
                                             <li><a href="<?= baseUrl() ?>uf">UF</a></li>
                                             <li><a href="<?= baseUrl() ?>cidade">Cidade</a></li>
+                                            <div class="divider">
+                                                <span>ou</span>
+                                            </div>
                                         <?php endif; ?>
+
+                                        <li><a href="<?= baseUrl() ?>aluno/meuPlano">Meu plano</a></li>
+                                        <li><a href="<?= baseUrl() ?>aluno/meuAcompanhamento">Meus acompanhamentos</a></li>
+                                        <li><a href="<?= baseUrl() ?>aluno/minhaFicha">Minha ficha</a></li>
+                                        <li><a href="<?= baseUrl() ?>aluno/meuExercicio">Meus exercicios</a></li>
                                         <li><a href="<?= baseUrl() ?>Usuario/formTrocarSenha">Trocar senha</a></li>
                                         <li><a href="<?= baseUrl() ?>login/signOut">Sair</a></li>
                                     </ul>
@@ -125,7 +155,7 @@ use Core\Library\Session;
                             <?php else: ?>
 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="<?= baseUrl() ?>Login">Área Restrita</a>
+                                    <a class="nav-link" href="<?= baseUrl() ?>Login">Entrar</a>
                                 </li>
 
                             <?php endif; ?>
@@ -134,9 +164,9 @@ use Core\Library\Session;
                 </div>
                 <div class="col-lg-3">
                     <div class="top-option">
-                        <div class="to-search search-switch">
+                        <!-- <div class="to-search search-switch">
                             <i class="fa fa-search"></i>
-                        </div>
+                        </div> -->
                         <div class="to-social">
                             <a href="#"><i class="fa fa-facebook"></i></a>
                             <a href="#"><i class="fa fa-twitter"></i></a>

@@ -1,7 +1,6 @@
 <?php
-
 $aPlano = $dados['aPlano'];
-
+$aUsuarios = $dados['aUsuario'];
 ?>
 
 <div class="hs-item set-bg" data-setbg="<?= baseUrl() ?>assets/img/hero/hero-1.jpg">
@@ -9,7 +8,7 @@ $aPlano = $dados['aPlano'];
         <div class="row">
             <div class="col-lg-6 offset-lg-6">
                 <div class="hi-text">
-                    <h1><strong>Cadastro de Aluno</strong></h1>
+                    <h1><strong></strong></h1>
                 </div>
             </div>
         </div>
@@ -70,7 +69,21 @@ $aPlano = $dados['aPlano'];
                     </select>
                     <?= setMsgFilderError("plano_id") ?>
                 </div>
+            </div>
 
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="usuario_id" class="form-label">Usuário</label>
+                    <select class="form-select" name="usuario_id" id="usuario_id" required>
+                        <option value="">Selecione</option>
+                        <?php foreach ($aUsuarios as $usuario): ?>
+                            <option value="<?= $usuario['id'] ?>" <?= setValor("usuario_id") == $usuario['id'] ? 'selected' : '' ?>>
+                                <?= $usuario['nome'] . " (" . $usuario['email'] . ")" ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                    <?= setMsgFilderError("usuario_id") ?>
+                </div>
             </div>
 
             <div class="mb-3">

@@ -28,11 +28,19 @@ class FichaTreino extends ControllerMain
      */
     public function index()
     {
+
+             if (!verificaSeUsuarioEstaLogado()) {
+            return Redirect::page('login');
+        }
         return $this->loadView("fichaTreino/listaFichaTreino", $this->model->listaFichaTreino());
     } 
 
     public function form($action, $id)
     {
+
+             if (!verificaSeUsuarioEstaLogado()) {
+            return Redirect::page('login');
+        }
         $dados = [
             'data' => $this->model->getById($id),  
             'aAluno' => $this->alunoModel->listaAluno(),               // Busca FichaTreino           

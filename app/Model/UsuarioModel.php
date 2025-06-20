@@ -26,10 +26,6 @@ class UsuarioModel extends ModelMain
             "label" => 'Status',
             "rules" => 'required|int'
         ],
-        "senha"  => [
-            "label" => 'Senha',
-            "rules" => 'required|min:4|max:255'
-        ],
     ];
 
     /**
@@ -70,5 +66,12 @@ class UsuarioModel extends ModelMain
                 return false;
             }
         }
+    }
+
+    public function listaUsuarioAluno()
+    {
+        return $this->db
+            ->where('nivel', 21)
+            ->findAll();
     }
 }

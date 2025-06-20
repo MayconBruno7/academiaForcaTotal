@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\PlanoModel;
+use App\Model\UsuarioModel;
 use Core\Library\ControllerMain;
 use Core\Library\Redirect;
 
@@ -10,12 +11,14 @@ class Aluno extends ControllerMain
 {
 
     protected $planoModel;
+    protected $usuarioModel;
 
     public function __construct()
     {
         $this->auxiliarconstruct();
         $this->loadHelper('formHelper');
         $this->planoModel = new PlanoModel();
+        $this->usuarioModel = new UsuarioModel();
     }
 
     /**
@@ -25,17 +28,26 @@ class Aluno extends ControllerMain
      */
     public function index()
     {
+        if (!verificaSeUsuarioEstaLogado()) {
+            return Redirect::page('login');
+        }
+
         return $this->loadView("aluno/listaAluno", $this->model->listaAluno());
     }
 
     public function form($action, $id)
     {
 
+        if (!verificaSeUsuarioEstaLogado()) {
+            return Redirect::page('login');
+        }
+
         $dados = [
-            'data' => $this->model->getById($id),  
+            'data' => $this->model->getById($id),
             'aPlano' => $this->planoModel->listaPlano(),               // Busca Aluno       
+            'aUsuario' => $this->usuarioModel->listaUsuarioAluno(),
         ];
-        
+
         return $this->loadView("aluno/formAluno", $dados);
     }
 
@@ -85,5 +97,57 @@ class Aluno extends ControllerMain
         } else {
             return Redirect::page($this->controller);
         }
+    }
+
+    public function meuPlano()
+    {
+        if (!verificaSeUsuarioEstaLogado()) {
+            return Redirect::page('login');
+        }
+
+        $dados = [
+            'aMeuPlano' => $this->model->meuPlano(),
+        ];
+
+        return $this->loadView("aluno/meuPlano", $dados);
+    }
+
+    public function meuAcompanhamento()
+    {
+        if (!verificaSeUsuarioEstaLogado()) {
+            return Redirect::page('login');
+        }
+
+        $dados = [
+            'aMeuAcompanhamento' => $this->model->meuAcompanhamento(),
+        ];
+
+        return $this->loadView("aluno/meuAcompanhamento", $dados);
+    }
+
+    public function minhaFicha()
+    {
+        if (!verificaSeUsuarioEstaLogado()) {
+            return Redirect::page('login');
+        }
+
+        $dados = [
+            'aMinhaFicha' => $this->model->minhaFicha(),
+        ];
+
+        return $this->loadView("aluno/minhaFicha", $dados);
+    }
+
+    public function meuExercicio()
+    {
+        if (!verificaSeUsuarioEstaLogado()) {
+            return Redirect::page('login');
+        }
+
+        $dados = [
+            'aMeuExercicio' => $this->model->meuExercicio(),
+        ];
+
+        return $this->loadView("aluno/meuExercicio", $dados);
     }
 }

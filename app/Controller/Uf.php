@@ -26,11 +26,19 @@ class Uf extends ControllerMain
      */
     public function index()
     {
+
+        if (!verificaSeUsuarioEstaLogado()) {
+            return Redirect::page('login');
+        }
         return $this->loadView("sistema/listaUf", $this->model->lista("regiao"));
     }
 
     public function form($action, $id)
     {
+
+        if (!verificaSeUsuarioEstaLogado()) {
+            return Redirect::page('login');
+        }
         return $this->loadView("sistema/formUf", $this->model->getById($id));
     }
 
@@ -50,7 +58,7 @@ class Uf extends ControllerMain
             // faz upload da imagem
 
             if (!empty($_FILES['bandeira']['name'])) {
-                
+
                 // Faz upload da imagem
                 $nomeRetornado = $this->files->upload($_FILES, 'uf');
 
@@ -94,16 +102,15 @@ class Uf extends ControllerMain
 
                 // se for boolean, significa que o upload falhou
                 if (is_bool($nomeRetornado)) {
-                    Session::set( 'inputs', $post);
+                    Session::set('inputs', $post);
                     return Redirect::page($this->controller . "/form/update/" . $post['id']);
                 } else {
                     $post['bandeira'] = $nomeRetornado[0];
                 }
-                
+
                 if (isset($post['nomeImagem'])) {
                     $this->files->delete($post['nomeImagem'], 'uf');
                 }
-                
             } else {
                 $post['bandeira'] = $post['nomeImagem'];
             }

@@ -707,7 +707,9 @@ class Database
             $sql = "INSERT INTO {$this->table} ($columns) VALUES ($placeHolders)";
 
             $conexao = $this->connect();
+            
             $query = $conexao->prepare($sql);
+        
             $query->execute($data);
 
             $rs = $conexao->lastInsertId();

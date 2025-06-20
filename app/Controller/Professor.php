@@ -5,17 +5,21 @@ namespace App\Controller;
 use App\Model\PlanoModel;
 use App\Model\UsuarioModel;
 use Core\Library\ControllerMain;
+use Core\Library\Files;
 use Core\Library\Redirect;
+use Core\Library\Session;
 
 class Professor extends ControllerMain
 {
 
     protected $usuarioModel;
+    protected $files;
 
     public function __construct()
     {
         $this->auxiliarconstruct();
         $this->loadHelper('formHelper');
+        $this->files = new Files();
 
         $this->usuarioModel = new UsuarioModel();
     }
@@ -27,17 +31,26 @@ class Professor extends ControllerMain
      */
     public function index()
     {
+
+        if (!verificaSeUsuarioEstaLogado()) {
+            return Redirect::page('login');
+        }
+
         return $this->loadView("professor/listaProfessor", $this->model->listaProfessor());
     }
 
     public function form($action, $id)
     {
 
+        if (!verificaSeUsuarioEstaLogado()) {
+            return Redirect::page('login');
+        }
+
         $dados = [
             'aUsuario' => $this->usuarioModel->lista('id'),
             'data' => $this->model->getById($id),                // Busca Professor       
         ];
-        
+
         return $this->loadView("professor/formProfessor", $dados);
     }
 
@@ -49,6 +62,24 @@ class Professor extends ControllerMain
     public function insert()
     {
         $post = $this->request->getPost();
+
+        // faz upload da imagem
+
+        if (!empty($_FILES['imagem']['name'])) {
+
+            // Faz upload da imagem
+            $nomeRetornado = $this->files->upload($_FILES, 'professor');
+
+            // se for boolean, significa que o upload falhou
+            if (is_bool($nomeRetornado)) {
+                Session::set('inputs', $post);
+                return Redirect::page($this->controller . "/form/insert/" . $post['id']);
+            } else {
+                $post['imagem'] = $nomeRetornado[0];
+            }
+        } else {
+            $post['imagem'] = $post['nomeImagem'];
+        }
 
         if ($this->model->insert($post)) {
             return Redirect::page($this->controller, ["msgSucesso" => "Registro inserido com sucesso."]);

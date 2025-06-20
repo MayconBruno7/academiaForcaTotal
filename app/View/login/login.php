@@ -1,16 +1,8 @@
+<?php
 
-<style>
-.hs-item {
-    width: 100%;
-    height: 25vh; /* Ocupa toda a altura da viewport */
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    display: flex;
-    align-items: center; /* Centraliza verticalmente */
-}
+use Core\Library\Session;
 
-</style>
+?>
 <div class="hs-item set-bg" data-setbg="<?= baseUrl() ?>assets/img/hero/hero-1.jpg">
     <div class="container">
         <div class="row">
@@ -40,9 +32,8 @@
                 </div>
                 <div class="col-12 d-flex justify-content-between mt-3 mb-2">
                     <h6><a href="<?= baseUrl() ?>Login/esqueciASenha" class="text-decoration-none">Esqueci minha senha!</a></h6>
-                    <!--
-                    <h6><a href="/Login/cadastrarLogin" class="link-secondary fw-bold">Quero criar uma conta</a></h6>
-                    -->
+                    
+                    <h6><a href="/Login/formCadastrarLogin" class="link-secondary fw-bold">Quero criar uma conta</a></h6>
                 </div>
                 <div class="col-12 mb-3">
                     <?= exibeAlerta() ?>

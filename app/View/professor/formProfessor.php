@@ -1,6 +1,6 @@
-<?php 
+<?php
 
-    $aUsuarios = $dados['aUsuario'];
+$aUsuarios = $dados['aUsuario'];
 
 ?>
 
@@ -19,7 +19,7 @@
 <?= formTitulo("Professor") ?>
 
 <div class="m-2">
-    <form method="POST" action="<?= $this->request->formAction() ?>">
+    <form method="POST" action="<?= $this->request->formAction() ?>" enctype="multipart/form-data">
         <?php if (setValor("id") != "" && setValor("id") != "0"): ?>
             <input type="hidden" name="id" id="id" value="<?= setValor("id") ?>">
         <?php endif; ?>
@@ -118,6 +118,25 @@
                 id="endereco"
                 rows="2"><?= setValor("endereco") ?></textarea>
             <?= setMsgFilderError("endereco") ?>
+        </div>
+
+        <div class="row">
+            <?php if (in_array($this->request->getAction(), ['insert', 'update'])): ?>
+                <div class="mb-3 col-12">
+                    <label for="imagem" class="form-label">Foto do professor</label>
+                    <input type="file" class="form-control" id="imagem" name="imagem" placeholder="Anexar a Foto do professor" maxlength="100" value="<?= setValor('imagem') ?>">
+                    <?= setMsgFilderError('imagem') ?>
+                </div>
+            <?php endif; ?>
+
+            <?php if (trim(setValor("imagem")) != ""): ?>
+                <div class="mb-3 col-12">
+
+                    <h5>Imagem</h5>
+                    <img src="<?= baseUrl() . 'imagem.php?file=professor/' . setValor("imagem") ?>" class="img-thumbnail" height="120" width="240" alt="Imagem">
+                    <input type="hidden" name="nomeImagem" id="nomeImagem" value="<?= setValor("imagem") ?>">
+                </div>
+            <?php endif; ?>
         </div>
 
         <?= formButton() ?>

@@ -172,3 +172,16 @@
     });
 
 })(jQuery);
+
+
+function goBack() {
+    window.history.back();
+}
+
+
+function enviarWhatsapp(mensagem) {
+    const numero = '5532998055493'; // Substitua pelo seu número com DDI e DDD
+    const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
+    window.open(url, '_blank'); // abre em nova aba
+}
+

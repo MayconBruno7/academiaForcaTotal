@@ -21,16 +21,24 @@ class Plano extends ControllerMain
      */
     public function index()
     {
+
+        if (!verificaSeUsuarioEstaLogado()) {
+            return Redirect::page('login');
+        }
         return $this->loadView("plano/listaPlano", $this->model->listaPlano());
     }
 
     public function form($action, $id)
     {
 
+        if (!verificaSeUsuarioEstaLogado()) {
+            return Redirect::page('login');
+        }
+
         $dados = [
             'data' => $this->model->getById($id),               // Busca Plano       
         ];
-        
+
         return $this->loadView("plano/formPlano", $dados);
     }
 
