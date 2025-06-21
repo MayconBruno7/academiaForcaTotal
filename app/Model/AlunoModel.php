@@ -34,14 +34,6 @@ class AlunoModel extends ModelMain
             "label" => "Endereço",
             "rules" => "required|min:5"
         ],
-        "plano_id" => [
-            "label" => "Plano",
-            "rules" => "permit_empty|int"
-        ],
-        "usuario_id" => [
-            "label" => "Usuário",
-            "rules" => "permit_empty|int"
-        ]
     ];
 
     /**

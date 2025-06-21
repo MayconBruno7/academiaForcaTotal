@@ -64,7 +64,9 @@
 
     <?php if ((int)Session::get("userNivel") <= 20): ?>
         <h1>Bem-vindo à área administrativa</h1>
-        <div class="row g-4">
+
+        <!-- Seção administrativa -->
+        <div class="row g-4 mb-5">
             <?php
             $adminLinks = [
                 ["icon" => "bi-person-gear", "text" => "Usuário", "url" => "usuario"],
@@ -78,11 +80,6 @@
                 ["icon" => "bi-key", "text" => "Trocar Senha", "url" => "Usuario/formTrocarSenha"],
                 ["icon" => "bi-geo", "text" => "UF", "url" => "uf"],
                 ["icon" => "bi-buildings", "text" => "Cidade", "url" => "cidade"],
-                ["icon" => "bi-journal-check", "text" => "Meu plano", "url" => "aluno/meuPlano"],
-                ["icon" => "bi-heart-pulse", "text" => "Meus acompanhamentos", "url" => "aluno/meuAcompanhamento"],
-                ["icon" => "bi-list-check", "text" => "Minha ficha", "url" => "aluno/minhaFicha"],
-                ["icon" => "bi-bounding-box", "text" => "Meus exercícios", "url" => "aluno/meuExercicio"],
-                ["icon" => "bi-key", "text" => "Trocar Senha", "url" => "Usuario/formTrocarSenha"],
             ];
 
             foreach ($adminLinks as $link): ?>
@@ -94,7 +91,34 @@
                 </div>
             <?php endforeach; ?>
         </div>
+
+        <!-- Separador -->
+        <hr style="margin: 3rem 0; border-color: #ddd;" />
+
+        <!-- Seção aluno dentro da área administrativa -->
+        <h2 class="mb-4" style="font-weight: 600; color: #444;">Área do Aluno</h2>
+        <div class="row g-4">
+            <?php
+            $alunoLinks = [
+                ["icon" => "bi-journal-check", "text" => "Meu plano", "url" => "aluno/meuPlano"],
+                ["icon" => "bi-heart-pulse", "text" => "Meus acompanhamentos", "url" => "aluno/meuAcompanhamento"],
+                ["icon" => "bi-list-check", "text" => "Minha ficha", "url" => "aluno/minhaFicha"],
+                ["icon" => "bi-bounding-box", "text" => "Meus exercícios", "url" => "aluno/meuExercicio"],
+                ["icon" => "bi-key", "text" => "Trocar Senha", "url" => "Usuario/formTrocarSenha"],
+            ];
+
+            foreach ($alunoLinks as $link): ?>
+                <div class="col-lg-3 col-md-6">
+                    <div class="admin-card">
+                        <i class="bi <?= $link["icon"] ?>"></i>
+                        <a href="<?= baseUrl() . $link["url"] ?>"><?= $link["text"] ?></a>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+
     <?php endif; ?>
+
 
     <?php if ((int)Session::get("userNivel") > 20): ?>
         <h1>Bem-vindo à sua área do aluno</h1>

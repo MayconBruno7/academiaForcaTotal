@@ -61,6 +61,9 @@ class Aluno extends ControllerMain
     {
         $post = $this->request->getPost();
 
+        $post['plano_id'] = empty($post['plano_id']) ? null : $post['plano_id'];
+        $post['usuario_id'] = empty($post['usuario_id']) ? null : $post['usuario_id'];
+
         if (Validator::make($post, $this->model->validationRules)) {
             return Redirect::page($this->controller . "/form/insert/0");
         } else {
@@ -80,6 +83,9 @@ class Aluno extends ControllerMain
     public function update()
     {
         $post = $this->request->getPost();
+
+        $post['plano_id'] = empty($post['plano_id']) ? null : $post['plano_id'];
+        $post['usuario_id'] = empty($post['usuario_id']) ? null : $post['usuario_id'];
 
         if (Validator::make($post, $this->model->validationRules)) {
             return Redirect::page($this->controller . "/form/insert/0");

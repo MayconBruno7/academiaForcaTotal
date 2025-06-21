@@ -22,7 +22,7 @@ USE `academia_forca_total`;
 -- Copiando estrutura para tabela academia_forca_total.acompanhamentos
 CREATE TABLE IF NOT EXISTS `acompanhamentos` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `ficha_id` int NOT NULL,
+  `ficha_id` int DEFAULT NULL,
   `data` date NOT NULL,
   `peso` decimal(5,2) NOT NULL,
   `medidas` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `acompanhamentos` (
   PRIMARY KEY (`id`),
   KEY `ficha_id` (`ficha_id`),
   CONSTRAINT `acompanhamentos_ibfk_1` FOREIGN KEY (`ficha_id`) REFERENCES `fichas_treino` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Exportação de dados foi desmarcado.
 
@@ -56,35 +56,21 @@ CREATE TABLE IF NOT EXISTS `alunos` (
 
 -- Exportação de dados foi desmarcado.
 
--- Copiando estrutura para tabela academia_forca_total.cidade
--- CREATE TABLE IF NOT EXISTS `cidade` (
---   `id` int NOT NULL AUTO_INCREMENT,
---   `nome` varchar(50) NOT NULL,
---   `uf_id` int NOT NULL,
---   `codigo_municipio` varchar(7) NOT NULL,
---   PRIMARY KEY (`id`),
---   UNIQUE KEY `nome_uf_id` (`nome`,`uf_id`),
---   KEY `FK1_cidade_uf_id` (`uf_id`),
---   CONSTRAINT `FK1_cidade_uf_id` FOREIGN KEY (`uf_id`) REFERENCES `uf` (`id`)
--- ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- Exportação de dados foi desmarcado.
-
 -- Copiando estrutura para tabela academia_forca_total.exercicios
 CREATE TABLE IF NOT EXISTS `exercicios` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) NOT NULL,
   `grupo_muscular` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Exportação de dados foi desmarcado.
 
 -- Copiando estrutura para tabela academia_forca_total.fichas_treino
 CREATE TABLE IF NOT EXISTS `fichas_treino` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `aluno_id` int NOT NULL,
-  `professor_id` int NOT NULL,
+  `aluno_id` int DEFAULT NULL,
+  `professor_id` int DEFAULT NULL,
   `data_inicio` date NOT NULL,
   `validade` date NOT NULL,
   `anotacoes` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
@@ -93,15 +79,15 @@ CREATE TABLE IF NOT EXISTS `fichas_treino` (
   KEY `professor_id` (`professor_id`),
   CONSTRAINT `fichas_treino_ibfk_1` FOREIGN KEY (`aluno_id`) REFERENCES `alunos` (`id`),
   CONSTRAINT `fichas_treino_ibfk_2` FOREIGN KEY (`professor_id`) REFERENCES `professores` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Exportação de dados foi desmarcado.
 
 -- Copiando estrutura para tabela academia_forca_total.ficha_exercicio
 CREATE TABLE IF NOT EXISTS `ficha_exercicio` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `ficha_id` int NOT NULL,
-  `exercicio_id` int NOT NULL,
+  `ficha_id` int DEFAULT NULL,
+  `exercicio_id` int DEFAULT NULL,
   `series` int DEFAULT NULL,
   `repeticoes` int DEFAULT NULL,
   `carga` decimal(5,2) DEFAULT NULL,
@@ -110,7 +96,7 @@ CREATE TABLE IF NOT EXISTS `ficha_exercicio` (
   KEY `exercicio_id` (`exercicio_id`),
   CONSTRAINT `ficha_exercicio_ibfk_1` FOREIGN KEY (`ficha_id`) REFERENCES `fichas_treino` (`id`) ON DELETE CASCADE,
   CONSTRAINT `ficha_exercicio_ibfk_2` FOREIGN KEY (`exercicio_id`) REFERENCES `exercicios` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Exportação de dados foi desmarcado.
 
@@ -121,14 +107,32 @@ CREATE TABLE IF NOT EXISTS `planos` (
   `valor` decimal(10,2) NOT NULL,
   `treinos_semanais` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Exportação de dados foi desmarcado.
+
+-- Copiando estrutura para tabela academia_forca_total.produtos_servicos
+CREATE TABLE IF NOT EXISTS `produtos_servicos` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nome` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `descricao` text COLLATE utf8mb4_general_ci,
+  `imagem` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `tipo` enum('produto','servico') COLLATE utf8mb4_general_ci NOT NULL,
+  `preco` decimal(10,2) NOT NULL,
+  `unidade` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `estoque` int DEFAULT NULL,
+  `status` tinyint DEFAULT '1' COMMENT '1 = ativo, 0 = inativo',
+  `criado_em` datetime DEFAULT CURRENT_TIMESTAMP,
+  `atualizado_em` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Exportação de dados foi desmarcado.
 
 -- Copiando estrutura para tabela academia_forca_total.professores
 CREATE TABLE IF NOT EXISTS `professores` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `usuario_id` int NOT NULL,
+  `usuario_id` int DEFAULT NULL,
   `nome` varchar(100) NOT NULL,
   `cpf` char(11) NOT NULL,
   `telefone` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
@@ -141,19 +145,7 @@ CREATE TABLE IF NOT EXISTS `professores` (
   UNIQUE KEY `cpf` (`cpf`),
   KEY `fk_professor_usuario` (`usuario_id`),
   CONSTRAINT `fk_professor_usuario` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- Exportação de dados foi desmarcado.
-
--- Copiando estrutura para tabela academia_forca_total.uf
--- CREATE TABLE IF NOT EXISTS `uf` (
---   `id` int NOT NULL AUTO_INCREMENT,
---   `sigla` varchar(2) NOT NULL,
---   `nome` varchar(50) NOT NULL,
---   `regiao` varchar(100) DEFAULT NULL,
---   PRIMARY KEY (`id`),
---   UNIQUE KEY `sigla` (`sigla`)
--- ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Exportação de dados foi desmarcado.
 
@@ -166,7 +158,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `senha` varchar(250) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `statusRegistro` int NOT NULL DEFAULT '1' COMMENT '1=Ativo; 2=Inativo; 3=Bloqueado;',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- Exportação de dados foi desmarcado.
 
@@ -182,22 +174,7 @@ CREATE TABLE IF NOT EXISTS `usuariorecuperasenha` (
   UNIQUE KEY `chave` (`chave`) USING BTREE,
   KEY `FK1_usuariorecuperacaosenha` (`usuario_id`) USING BTREE,
   CONSTRAINT `FK1_usuariorecuperacaosenha` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-CREATE TABLE IF NOT EXISTS produtos_servicos (
-  id INT NOT NULL AUTO_INCREMENT,
-  nome VARCHAR(100) NOT NULL,
-  descricao TEXT,
-  imagem VARCHAR(255) DEFAULT NULL,
-  tipo ENUM('produto', 'servico') NOT NULL,
-  preco DECIMAL(10,2) NOT NULL,
-  unidade VARCHAR(50) DEFAULT NULL,
-  estoque INT DEFAULT NULL,
-  status TINYINT DEFAULT 1 COMMENT '1 = ativo, 0 = inativo',
-  criado_em DATETIME DEFAULT CURRENT_TIMESTAMP,
-  atualizado_em DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Exportação de dados foi desmarcado.
 

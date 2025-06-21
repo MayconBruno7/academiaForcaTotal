@@ -64,6 +64,8 @@ class Professor extends ControllerMain
     {
         $post = $this->request->getPost();
 
+        $post['usuario_id'] = empty($post['usuario_id']) ? null : $post['usuario_id'];
+
         // faz upload da imagem
 
         if (!empty($_FILES['imagem']['name'])) {
@@ -101,6 +103,8 @@ class Professor extends ControllerMain
     public function update()
     {
         $post = $this->request->getPost();
+
+        $post['usuario_id'] = empty($post['usuario_id']) ? null : $post['usuario_id'];
 
         if (!empty($_FILES['imagem']['name'])) {
 

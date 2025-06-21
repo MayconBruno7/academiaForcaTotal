@@ -9,10 +9,6 @@ class ProfessorModel extends ModelMain
     protected $table = "professores";
 
     public $validationRules = [
-        "usuario_id" => [
-            "label" => "Usuário",
-            "rules" => "required|integer"
-        ],
         "nome" => [
             "label" => "Nome",
             "rules" => "required|min:3|max:100"

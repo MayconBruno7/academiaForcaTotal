@@ -49,6 +49,8 @@ class Acompanhamento extends ControllerMain
     {
         $post = $this->request->getPost();
 
+        $post['ficha_id'] = empty($post['ficha_id']) ? null : $post['ficha_id'];
+
         if (Validator::make($post, $this->model->validationRules)) {
             return Redirect::page($this->controller . "/form/insert/0");
         } else {
@@ -69,6 +71,8 @@ class Acompanhamento extends ControllerMain
     {
         $post = $this->request->getPost();
 
+        $post['ficha_id'] = empty($post['ficha_id']) ? null : $post['ficha_id'];
+        
         if (Validator::make($post, $this->model->validationRules)) {
             return Redirect::page($this->controller . "/form/insert/0");
         } else {

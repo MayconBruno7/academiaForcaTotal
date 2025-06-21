@@ -27,7 +27,7 @@ $aMeuExercicio = $dados['aMeuExercicio'];
 <?php if (!empty($aMeuExercicio)): ?>
     <div class="d-flex justify-content-around m-5">
         <div class="table-responsive">
-            <table class="table table-bordered table-striped table-hover table-sm table-responsive">
+            <table class="table table-bordered table-striped table-hover table-sm table-responsive" id="tbMeuExercicio">
                 <thead>
                     <tr>
                         <th>Exercício</th>
@@ -56,3 +56,5 @@ $aMeuExercicio = $dados['aMeuExercicio'];
         Nenhum exercício cadastrado para a sua ficha de treino.
     </div>
 <?php endif; ?>
+
+<?= datatables('tbMeuExercicio') ?>

@@ -1,5 +1,5 @@
 <?php
-$aFichas = $dados['aFichaTreino'] ?? [];
+    $aFichas = $dados['aFichaTreino'] ?? [];
 ?>
 
 <div class="hs-item set-bg" data-setbg="<?= baseUrl() ?>assets/img/hero/hero-1.jpg">
@@ -7,7 +7,6 @@ $aFichas = $dados['aFichaTreino'] ?? [];
         <div class="row">
             <div class="col-lg-6 offset-lg-6">
                 <div class="hi-text">
-                    <h1><strong>Cadastro de Acompanhamento</strong></h1>
                 </div>
             </div>
         </div>
@@ -26,7 +25,7 @@ $aFichas = $dados['aFichaTreino'] ?? [];
             <div class="row">
                 <div class="col-md-4 mb-3">
                     <label for="ficha_id" class="form-label">Ficha de Treino</label>
-                    <select class="form-select" name="ficha_id" id="ficha_id" required>
+                    <select class="form-select" name="ficha_id" id="ficha_id" <?= !empty($aFichas) ? 'required' : "" ?>>
                         <option value="">Selecione</option>
                         <?php foreach ($aFichas as $ficha): ?>
                             <option value="<?= $ficha['id'] ?>" <?= setValor("ficha_id") == $ficha['id'] ? 'selected' : '' ?>>

@@ -26,7 +26,7 @@
         <div class="row">
             <div class="col-md-6 mb-3">
                 <label for="ficha_id" class="form-label">Ficha de Treino</label>
-                <select class="form-select" name="ficha_id" id="ficha_id" required>
+                <select class="form-select" name="ficha_id" id="ficha_id" <?= !empty($aFicha) ? 'required' : "" ?>>
                     <option value="">Selecione</option>
                     <?php foreach ($aFicha as $ficha): ?>
                         <option value="<?= $ficha['id'] ?>" <?= setValor("ficha_id") == $ficha['id'] ? 'selected' : '' ?>>
@@ -39,7 +39,7 @@
 
             <div class="col-md-6 mb-3">
                 <label for="exercicio_id" class="form-label">Exercício</label>
-                <select class="form-select" name="exercicio_id" id="exercicio_id" required>
+                <select class="form-select" name="exercicio_id" id="exercicio_id" <?= !empty($aExercicio) ? 'required' : "" ?>>
                     <option value="">Selecione</option>
                     <?php foreach ($aExercicio as $ex): ?>
                         <option value="<?= $ex['id'] ?>" <?= setValor("exercicio_id") == $ex['id'] ? 'selected' : '' ?>>

@@ -37,7 +37,7 @@
         <div class="row">
             <div class="col-md-6 mb-3">
                 <label for="aluno_id" class="form-label">Aluno</label>
-                <select class="form-select" name="aluno_id" id="aluno_id" required>
+                <select class="form-select" name="aluno_id" id="aluno_id" <?= !empty($aAluno) ? 'required' : "" ?>>
                     <option value="">Selecione</option>
                     <?php foreach ($aAluno as $aluno): ?>
                         <option value="<?= $aluno['id'] ?>" <?= setValor("aluno_id") == $aluno['id'] ? 'selected' : '' ?>>

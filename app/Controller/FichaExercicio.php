@@ -58,7 +58,10 @@ class FichaExercicio extends ControllerMain
     public function insert()
     {
         $post = $this->request->getPost();
-        
+
+        $post['ficha_id'] = empty($post['ficha_id']) ? null : $post['ficha_id'];
+        $post['exercicio_id'] = empty($post['exercicio_id']) ? null : $post['exercicio_id'];
+
         if (Validator::make($post, $this->model->validationRules)) {
             return Redirect::page($this->controller . "/form/insert/0");
         } else {
@@ -79,6 +82,9 @@ class FichaExercicio extends ControllerMain
     {
         $post = $this->request->getPost();
 
+        $post['ficha_id'] = empty($post['ficha_id']) ? null : $post['ficha_id'];
+        $post['exercicio_id'] = empty($post['exercicio_id']) ? null : $post['exercicio_id'];
+        
         if (Validator::make($post, $this->model->validationRules)) {
             return Redirect::page($this->controller . "/form/insert/0");
         } else {

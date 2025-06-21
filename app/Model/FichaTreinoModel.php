@@ -9,10 +9,6 @@ class FichaTreinoModel extends ModelMain
     protected $table = "fichas_treino";
 
     public $validationRules = [
-        "aluno_id" => [
-            "label" => "Aluno",
-            "rules" => "required|integer|greater_than[0]"
-        ],
         "professor_id" => [
             "label" => "Professor",
             "rules" => "required|integer|greater_than[0]"

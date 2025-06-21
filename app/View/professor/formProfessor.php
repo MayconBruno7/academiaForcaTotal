@@ -85,7 +85,7 @@ $aUsuarios = $dados['aUsuario'];
             <!-- Usuário -->
             <div class="col-md-6 mb-3">
                 <label for="usuario_id" class="form-label">Usuário</label>
-                <select class="form-select" name="usuario_id" id="usuario_id" required>
+                <select class="form-select" name="usuario_id" id="usuario_id" <?= !empty($aUsuarios) ? 'required' : "" ?>>
                     <option value="">Selecione</option>
                     <?php foreach ($aUsuarios as $usuario): ?>
                         <option value="<?= $usuario['id'] ?>" <?= setValor("usuario_id") == $usuario['id'] ? 'selected' : '' ?>>

@@ -61,6 +61,9 @@ class FichaTreino extends ControllerMain
     {
         $post = $this->request->getPost();
 
+        $post['aluno_id'] = empty($post['aluno_id']) ? null : $post['aluno_id'];
+        $post['professor_id'] = empty($post['professor_id']) ? null : $post['professor_id'];
+
         if (Validator::make($post, $this->model->validationRules)) {
             return Redirect::page($this->controller . "/form/insert/0");
         } else {
@@ -81,6 +84,9 @@ class FichaTreino extends ControllerMain
     public function update()
     {
         $post = $this->request->getPost();
+
+        $post['aluno_id'] = empty($post['aluno_id']) ? null : $post['aluno_id'];
+        $post['professor_id'] = empty($post['professor_id']) ? null : $post['professor_id'];
 
         if (Validator::make($post, $this->model->validationRules)) {
             return Redirect::page($this->controller . "/form/insert/0");

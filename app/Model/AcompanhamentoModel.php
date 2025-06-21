@@ -9,10 +9,6 @@ class AcompanhamentoModel extends ModelMain
     protected $table = "acompanhamentos";
 
     public $validationRules = [
-        "ficha_id" => [
-            "label" => "Ficha de Treino",
-            "rules" => "required|int"
-        ],
         "data" => [
             "label" => "Data",
             "rules" => "required|date"

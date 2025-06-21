@@ -9,14 +9,6 @@ class FichaExercicioModel extends ModelMain
     protected $table = "ficha_exercicio";
     
     public $validationRules = [
-        "ficha_id" => [
-            "label" => "Ficha",
-            "rules" => "required|integer|greater_than[0]"
-        ],
-        "exercicio_id" => [
-            "label" => "Exercício",
-            "rules" => "required|integer|greater_than[0]"
-        ],
         "series" => [
             "label" => "Séries",
             "rules" => "permit_empty|integer|greater_than[0]|less_than_equal_to[100]"

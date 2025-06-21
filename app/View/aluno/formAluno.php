@@ -4,11 +4,10 @@ $aUsuarios = $dados['aUsuario'];
 ?>
 
 <div class="hs-item set-bg" data-setbg="<?= baseUrl() ?>assets/img/hero/hero-1.jpg">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 offset-lg-6">
-                <div class="hi-text">
-                    <h1><strong></strong></h1>
+    <div class="container py-5">
+        <div class="row justify-content-end">
+            <div class="col-lg-6">
+                <div class="hi-text text-white">
                 </div>
             </div>
         </div>
@@ -17,19 +16,21 @@ $aUsuarios = $dados['aUsuario'];
 
 <?= formTitulo("Aluno") ?>
 
-<div class="m-2">
+<div class="container my-4">
     <div class="form-container">
-        <form method="POST" action="<?= $this->request->formAction() ?>">
+        <form method="POST" action="<?= $this->request->formAction() ?>" novalidate>
+
             <?php if (setValor("id") != "" && setValor("id") != "0"): ?>
                 <input type="hidden" name="id" id="id" value="<?= setValor("id") ?>">
             <?php endif; ?>
 
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label for="nome" class="form-label">Nome</label>
+            <div class="row g-3">
+                <!-- Nome -->
+                <div class="col-md-6">
+                    <label for="nome" class="form-label">Nome <span class="text-danger">*</span></label>
                     <input
                         type="text"
-                        class="form-control"
+                        class="form-control <?= setMsgFilderError("nome") ? 'is-invalid' : '' ?>"
                         id="nome"
                         name="nome"
                         minlength="3"
@@ -41,11 +42,12 @@ $aUsuarios = $dados['aUsuario'];
                     <?= setMsgFilderError("nome") ?>
                 </div>
 
-                <div class="col-md-3 mb-3">
-                    <label for="cpf" class="form-label">CPF</label>
+                <!-- CPF -->
+                <div class="col-md-3">
+                    <label for="cpf" class="form-label">CPF <span class="text-danger">*</span></label>
                     <input
                         type="text"
-                        class="form-control"
+                        class="form-control <?= setMsgFilderError("cpf") ? 'is-invalid' : '' ?>"
                         id="cpf"
                         name="cpf"
                         maxlength="11"
@@ -59,11 +61,12 @@ $aUsuarios = $dados['aUsuario'];
                     <?= setMsgFilderError("cpf") ?>
                 </div>
 
-                <div class="col-md-3 mb-3">
-                    <label for="telefone" class="form-label">Telefone</label>
+                <!-- Telefone -->
+                <div class="col-md-3">
+                    <label for="telefone" class="form-label">Telefone <span class="text-danger">*</span></label>
                     <input
                         type="tel"
-                        class="form-control"
+                        class="form-control <?= setMsgFilderError("telefone") ? 'is-invalid' : '' ?>"
                         id="telefone"
                         name="telefone"
                         minlength="8"
@@ -77,12 +80,13 @@ $aUsuarios = $dados['aUsuario'];
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label for="email" class="form-label">E-mail</label>
+            <div class="row g-3 mt-1">
+                <!-- Email -->
+                <div class="col-md-6">
+                    <label for="email" class="form-label">E-mail <span class="text-danger">*</span></label>
                     <input
                         type="email"
-                        class="form-control"
+                        class="form-control <?= setMsgFilderError("email") ? 'is-invalid' : '' ?>"
                         id="email"
                         name="email"
                         maxlength="100"
@@ -92,11 +96,12 @@ $aUsuarios = $dados['aUsuario'];
                     <?= setMsgFilderError("email") ?>
                 </div>
 
-                <div class="col-md-3 mb-3">
-                    <label for="data_nascimento" class="form-label">Data de Nascimento</label>
+                <!-- Data de Nascimento -->
+                <div class="col-md-3">
+                    <label for="data_nascimento" class="form-label">Data de Nascimento <span class="text-danger">*</span></label>
                     <input
                         type="date"
-                        class="form-control"
+                        class="form-control <?= setMsgFilderError("data_nascimento") ? 'is-invalid' : '' ?>"
                         id="data_nascimento"
                         name="data_nascimento"
                         value="<?= setValor("data_nascimento") ?>"
@@ -105,13 +110,19 @@ $aUsuarios = $dados['aUsuario'];
                     <?= setMsgFilderError("data_nascimento") ?>
                 </div>
 
-                <div class="col-md-3 mt-4">
+                <!-- Plano -->
+                <div class="col-md-3">
                     <label for="plano_id" class="form-label">Plano</label>
-                    <select class="form-select" name="plano_id" id="plano_id">
+                    <select
+                        class="form-select <?= setMsgFilderError("plano_id") ? 'is-invalid' : '' ?>"
+                        name="plano_id"
+                        id="plano_id"
+                        <?= !empty($aPlano) ? 'required' : "" ?>
+                    >
                         <option value="">Selecione</option>
                         <?php foreach ($aPlano as $plano): ?>
                             <option value="<?= $plano['id'] ?>" <?= setValor("plano_id") == $plano['id'] ? 'selected' : '' ?>>
-                                <?= $plano['nome'] ?>
+                                <?= htmlspecialchars($plano['nome']) ?>
                             </option>
                         <?php endforeach; ?>
                     </select>
@@ -119,14 +130,20 @@ $aUsuarios = $dados['aUsuario'];
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-md-6 mb-3">
+            <div class="row g-3 mt-1">
+                <!-- Usuário -->
+                <div class="col-md-12">
                     <label for="usuario_id" class="form-label">Usuário</label>
-                    <select class="form-select" name="usuario_id" id="usuario_id">
+                    <select
+                        class="form-select <?= setMsgFilderError("usuario_id") ? 'is-invalid' : '' ?>"
+                        name="usuario_id"
+                        id="usuario_id"
+                        <?= !empty($aUsuarios) ? 'required' : "" ?>
+                    >
                         <option value="">Selecione</option>
                         <?php foreach ($aUsuarios as $usuario): ?>
                             <option value="<?= $usuario['id'] ?>" <?= setValor("usuario_id") == $usuario['id'] ? 'selected' : '' ?>>
-                                <?= $usuario['nome'] . " (" . $usuario['email'] . ")" ?>
+                                <?= htmlspecialchars($usuario['nome'] . " (" . $usuario['email'] . ")") ?>
                             </option>
                         <?php endforeach; ?>
                     </select>
@@ -134,20 +151,23 @@ $aUsuarios = $dados['aUsuario'];
                 </div>
             </div>
 
-            <div class="mb-3">
-                <label for="endereco" class="form-label">Endereço</label>
+            <!-- Endereço -->
+            <div class="mb-3 mt-3">
+                <label for="endereco" class="form-label">Endereço <span class="text-danger">*</span></label>
                 <textarea
-                    class="form-control"
+                    class="form-control <?= setMsgFilderError("endereco") ? 'is-invalid' : '' ?>"
                     name="endereco"
                     id="endereco"
-                    rows="2"
+                    rows="3"
                     minlength="5"
                     required
                 ><?= setValor("endereco") ?></textarea>
                 <?= setMsgFilderError("endereco") ?>
             </div>
 
-            <?= formButton() ?>
+            <div class="mt-4">
+                <?= formButton() ?>
+            </div>
         </form>
     </div>
 </div>

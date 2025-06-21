@@ -34,7 +34,6 @@
                 <th>Validade</th>
                 <th>Professor</th>
                 <th>Anotações</th>
-                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -45,9 +44,6 @@
                 <td><?= date('d/m/Y', strtotime($ficha['validade'])) ?></td>
                 <td><?= htmlspecialchars($ficha['professor_nome'] ?? 'Não informado') ?></td>
                 <td><?= nl2br(htmlspecialchars(mb_strimwidth($ficha['anotacoes'] ?? '', 0, 30, '...'))) ?></td>
-                <td>
-                    <a href="<?= baseUrl() ?>Aluno/verFichaDetalhes/<?= $ficha['id'] ?>" class="btn btn-sm btn-outline-primary">Detalhes</a>
-                </td>
             </tr>
             <?php endforeach; ?>
         </tbody>
