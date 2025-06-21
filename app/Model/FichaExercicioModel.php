@@ -7,21 +7,30 @@ use Core\Library\ModelMain;
 class FichaExercicioModel extends ModelMain
 {
     protected $table = "ficha_exercicio";
+    
+    public $validationRules = [
+        "ficha_id" => [
+            "label" => "Ficha",
+            "rules" => "required|integer|greater_than[0]"
+        ],
+        "exercicio_id" => [
+            "label" => "Exercício",
+            "rules" => "required|integer|greater_than[0]"
+        ],
+        "series" => [
+            "label" => "Séries",
+            "rules" => "permit_empty|integer|greater_than[0]|less_than_equal_to[100]"
+        ],
+        "repeticoes" => [
+            "label" => "Repetições",
+            "rules" => "permit_empty|integer|greater_than[0]|less_than_equal_to[100]"
+        ],
+        "carga" => [
+            "label" => "Carga (kg)",
+            "rules" => "permit_empty|decimal"
+        ]
+    ];
 
-    // public $validationRules = [
-        // "nome"  => [
-        //     "label" => 'Nome',
-        //     "rules" => 'required|min:3|max:50'
-        // ],
-        // "valor"  => [
-        //     "label" => 'Valor Plano',
-        //     "rules" => 'required|min:2|max:7'
-        // ],
-        // "treinos_semanais"  => [
-        //     "label" => 'Treinos mensais',
-        //     "rules" => 'required|int'
-        // ]
-    // ];
 
 
     public function listaFichaExercicio()

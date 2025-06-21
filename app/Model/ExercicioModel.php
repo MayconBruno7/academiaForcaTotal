@@ -9,20 +9,15 @@ class ExercicioModel extends ModelMain
     protected $table = "exercicios";
 
     public $validationRules = [
-        "nome"  => [
-            "label" => 'Nome',
-            "rules" => 'required|min:3|max:50'
+        "nome" => [
+            "label" => "Nome",
+            "rules" => "required|min:3|max:100"
         ],
-        // "valor"  => [
-        //     "label" => 'Valor Plano',
-        //     "rules" => 'required|min:2|max:7'
-        // ],
-        // "treinos_semanais"  => [
-        //     "label" => 'Treinos mensais',
-        //     "rules" => 'required|int'
-        // ]
+        "grupo_muscular" => [
+            "label" => "Grupo Muscular",
+            "rules" => "required|min:3|max:50"
+        ]
     ];
-
 
     /**
      * lista
@@ -32,7 +27,7 @@ class ExercicioModel extends ModelMain
      */
     public function listaExercicio()
     {
-         return $this->db
+        return $this->db
             ->select('exercicios.*')
             ->findAll();
     }

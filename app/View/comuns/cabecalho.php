@@ -15,7 +15,7 @@ use Core\Library\Session;
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" type="image/png" href="<?= baseUrl() ?>assets/img/logo.png">
 
-    <title>Academia | Força Total</title>
+    <title>Academia | Muriaé GYM</title>
 
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,600,700&display=swap" rel="stylesheet">
@@ -87,7 +87,7 @@ use Core\Library\Session;
                 <?php else: ?>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= baseUrl() ?>Login">Entrar</a>
+                        <a class="nav-link" href="<?= baseUrl() ?>login">Entrar</a>
                     </li>
 
                 <?php endif; ?>
@@ -111,9 +111,9 @@ use Core\Library\Session;
                     <div class="logo">
                         <a class="text-decoration-none" href="<?= baseUrl() ?>">
                             <img
-                            src="<?= baseUrl() ?>assets/img/logo.png"
-                            alt="Logo da Academia"
-                            style="width: 180px; height:200px; object-fit: contain; padding: 8px 0; margin-bottom: 10px;">
+                                src="<?= baseUrl() ?>assets/img/logo.png"
+                                alt="Logo da Academia"
+                                style="width: 180px; height:200px; object-fit: contain; padding: 8px 0; margin-bottom: 10px;">
 
                         </a>
                     </div>
@@ -140,20 +140,25 @@ use Core\Library\Session;
                                             <li><a class="text-decoration-none" href="<?= baseUrl() ?>exercicio">Cadastrar Exercicios</a></li>
                                             <li><a class="text-decoration-none" href="<?= baseUrl() ?>fichaTreino">Cadastrar Fichas de treino</a></li>
                                             <li><a class="text-decoration-none" href="<?= baseUrl() ?>fichaExercicio">Cadastrar Fichas de exercicio</a></li>
+                                            <li><a class="text-decoration-none" href="<?= baseUrl() ?>ProdutoServico">Cadastro Produtos/Serviços</a></li>
 
-                                            <li><a class="text-decoration-none" href="<?= baseUrl() ?>uf">UF</a></li>
-                                            <li><a class="text-decoration-none" href="<?= baseUrl() ?>cidade">Cidade</a></li>
+                                            <!-- <li><a class="text-decoration-none" href="<?= baseUrl() ?>uf">UF</a></li>
+                                            <li><a class="text-decoration-none" href="<?= baseUrl() ?>cidade">Cidade</a></li> -->
                                             <div class="divider">
                                                 <span>ou</span>
                                             </div>
                                         <?php endif; ?>
 
+                                        <li><a class="text-decoration-none" href="<?= baseUrl() ?>login/signOut">Sair</a></li>
+                                    </ul>
+                                </li>
+                                <li><a class="text-decoration-none" href="<?= baseUrl() ?>sistema">Aluno</a>
+                                    <ul class="dropdown">
                                         <li><a class="text-decoration-none" href="<?= baseUrl() ?>aluno/meuPlano">Meu plano</a></li>
                                         <li><a class="text-decoration-none" href="<?= baseUrl() ?>aluno/meuAcompanhamento">Meus acompanhamentos</a></li>
                                         <li><a class="text-decoration-none" href="<?= baseUrl() ?>aluno/minhaFicha">Minha ficha</a></li>
                                         <li><a class="text-decoration-none" href="<?= baseUrl() ?>aluno/meuExercicio">Meus exercicios</a></li>
                                         <li><a class="text-decoration-none" href="<?= baseUrl() ?>Usuario/formTrocarSenha">Trocar senha</a></li>
-                                        <li><a class="text-decoration-none" href="<?= baseUrl() ?>login/signOut">Sair</a></li>
                                     </ul>
                                 </li>
                             <?php else: ?>

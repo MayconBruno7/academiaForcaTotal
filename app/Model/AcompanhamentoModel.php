@@ -8,21 +8,32 @@ class AcompanhamentoModel extends ModelMain
 {
     protected $table = "acompanhamentos";
 
-    // public $validationRules = [
-    //     "nome"  => [
-    //         "label" => 'Nome',
-    //         "rules" => 'required|min:3|max:50'
-    //     ],
-    // "valor"  => [
-    //     "label" => 'Valor Plano',
-    //     "rules" => 'required|min:2|max:7'
-    // ],
-    // "treinos_semanais"  => [
-    //     "label" => 'Treinos mensais',
-    //     "rules" => 'required|int'
-    // ]
-    // ];
-
+    public $validationRules = [
+        "ficha_id" => [
+            "label" => "Ficha de Treino",
+            "rules" => "required|int"
+        ],
+        "data" => [
+            "label" => "Data",
+            "rules" => "required|date"
+        ],
+        "peso" => [
+            "label" => "Peso (kg)",
+            "rules" => "required|numeric|min:0|max:999.99"
+        ],
+        "medidas" => [
+            "label" => "Medidas",
+            "rules" => "required|min:5"
+        ],
+        "frequencia" => [
+            "label" => "Frequência",
+            "rules" => "required|int|min:1|max:14"
+        ],
+        "observacoes" => [
+            "label" => "Observações",
+            "rules" => "required|min:3"
+        ]
+    ];
 
     /**
      * lista

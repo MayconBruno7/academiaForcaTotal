@@ -7,19 +7,19 @@ use Core\Library\ModelMain;
 class PlanoModel extends ModelMain
 {
     protected $table = "planos";
-    
+
     public $validationRules = [
-        "nome"  => [
-            "label" => 'Nome',
-            "rules" => 'required|min:3|max:50'
+        "nome" => [
+            "label" => "Nome",
+            "rules" => "required|min:3|max:50"
         ],
-        "valor"  => [
-            "label" => 'Valor Plano',
-            "rules" => 'required|min:2|max:7'
+        "valor" => [
+            "label" => "Valor",
+            "rules" => "required|decimal|greater_than_equal_to[0]"
         ],
-        "treinos_semanais"  => [
-            "label" => 'Treinos mensais',
-            "rules" => 'required|int'
+        "treinos_semanais" => [
+            "label" => "Treinos Semanais",
+            "rules" => "required|integer|greater_than[0]|less_than_equal_to[14]"
         ]
     ];
 
@@ -31,10 +31,9 @@ class PlanoModel extends ModelMain
      * @return array
      */
     public function listaPlano()
-    {   
+    {
         return $this->db
             ->select('planos.*')
             ->findAll();
     }
-
 }

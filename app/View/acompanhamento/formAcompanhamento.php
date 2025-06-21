@@ -45,27 +45,27 @@ $aFichas = $dados['aFichaTreino'] ?? [];
 
                 <div class="col-md-4 mb-3">
                     <label for="peso" class="form-label">Peso (kg)</label>
-                    <input type="number" step="0.01" class="form-control" id="peso" name="peso" value="<?= setValor("peso") ?>">
+                    <input type="number" step="0.01" class="form-control" id="peso" name="peso" value="<?= setValor("peso") ?>" required>
                     <?= setMsgFilderError("peso") ?>
                 </div>
             </div>
 
             <div class="mb-3">
                 <label for="medidas" class="form-label">Medidas (ex: Peito: 100cm, Braço: 35cm...)</label>
-                <textarea class="form-control" id="medidas" name="medidas" rows="2"><?= setValor("medidas") ?></textarea>
+                <textarea class="form-control" id="medidas" name="medidas" rows="2" required><?= setValor("medidas") ?></textarea>
                 <?= setMsgFilderError("medidas") ?>
             </div>
 
             <div class="row">
                 <div class="col-md-3 mb-3">
                     <label for="frequencia" class="form-label">Frequência (dias/semana)</label>
-                    <input type="number" class="form-control" id="frequencia" name="frequencia" value="<?= setValor("frequencia") ?>">
+                    <input type="number" class="form-control" id="frequencia" name="frequencia" value="<?= setValor("frequencia") ?>" required>
                     <?= setMsgFilderError("frequencia") ?>
                 </div>
 
                 <div class="col-md-9 mb-3">
                     <label for="observacoes" class="form-label">Observações</label>
-                    <textarea class="form-control" id="observacoes" name="observacoes" rows="2"><?= setValor("observacoes") ?></textarea>
+                    <textarea class="form-control" id="observacoes" name="observacoes" rows="2" required><?= setValor("observacoes") ?></textarea>
                     <?= setMsgFilderError("observacoes") ?>
                 </div>
             </div>

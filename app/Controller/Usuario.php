@@ -91,8 +91,6 @@ class Usuario extends ControllerMain
                 "statusRegistro"    => $post['statusRegistro']
             ];
             
-            var_dump($post);
-            // exit('opa');
             if ($this->model->insert($dados)) {         
                 return Redirect::page($this->controller, ["msgSucesso" => "Registro atualizado com sucesso."]);
             } else {

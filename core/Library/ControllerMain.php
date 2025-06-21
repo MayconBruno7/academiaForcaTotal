@@ -47,7 +47,8 @@ class ControllerMain
                 // Se não for o método de acesso permitido publicamente de Plano ou Professor
                 $liberadoSemLogin = !(
                     ($this->controller === 'Plano' && $this->method === 'listaPlano') ||
-                    ($this->controller === 'Professor' && $this->method === 'listaProfessor')
+                    ($this->controller === 'Professor' && $this->method === 'listaProfessor') ||
+                    ($this->controller === 'Login')
                 );
 
                 // Se for um controller que exige login, mas o usuário não está logado

@@ -9,20 +9,28 @@ class FichaTreinoModel extends ModelMain
     protected $table = "fichas_treino";
 
     public $validationRules = [
-        // "nome"  => [
-        //     "label" => 'Nome',
-        //     "rules" => 'required|min:3|max:50'
-        // ],
-        // "valor"  => [
-        //     "label" => 'Valor Plano',
-        //     "rules" => 'required|min:2|max:7'
-        // ],
-        // "treinos_semanais"  => [
-        //     "label" => 'Treinos mensais',
-        //     "rules" => 'required|int'
-        // ]
+        "aluno_id" => [
+            "label" => "Aluno",
+            "rules" => "required|integer|greater_than[0]"
+        ],
+        "professor_id" => [
+            "label" => "Professor",
+            "rules" => "required|integer|greater_than[0]"
+        ],
+        "data_inicio" => [
+            "label" => "Data de Início",
+            "rules" => "required|valid_date"
+        ],
+        "validade" => [
+            "label" => "Validade",
+            "rules" => "required|valid_date|greater_than_or_equal_field[data_inicio]"
+        ],
+        "anotacoes" => [
+            
+            "label" => "Anotações",
+            "rules" => "permit_empty|string"
+        ]
     ];
-
 
     /**
      * lista
@@ -51,7 +59,7 @@ class FichaTreinoModel extends ModelMain
     public function listaSelectFichas()
     {
         return $this->db
-        ->select('
+            ->select('
                 fichas_treino.id,
                 fichas_treino.data_inicio,
                 alunos.nome AS nome_aluno

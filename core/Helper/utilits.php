@@ -16,7 +16,6 @@ use Core\Library\Session;
     function verificaSeUsuarioEstaLogado()
     {
         if (!Session::get("userId")) {
-            Session::set('msgError', "Para acessar a rotina, favor efetuar o login.");
             return false;
         }
         return true;

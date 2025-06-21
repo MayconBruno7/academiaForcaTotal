@@ -60,8 +60,8 @@
                     name="series"
                     value="<?= setValor("series") ?>"
                     min="1"
-                    max="10"
-                    required>
+                    max="100"
+                    >
                 <?= setMsgFilderError("series") ?>
             </div>
 
@@ -73,8 +73,8 @@
                     name="repeticoes"
                     value="<?= setValor("repeticoes") ?>"
                     min="1"
-                    max="50"
-                    required>
+                    max="100"
+                    >
                 <?= setMsgFilderError("repeticoes") ?>
             </div>
 
@@ -87,7 +87,7 @@
                     name="carga"
                     value="<?= setValor("carga") ?>"
                     min="0"
-                    required>
+                    >
                 <?= setMsgFilderError("carga") ?>
             </div>
         </div>

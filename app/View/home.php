@@ -2,6 +2,7 @@
 
 $aPlano = $dados['aPlano'];
 $aProfessor = $dados['aProfessor'];
+$aProdutoServico = $dados['aProdutoServico'];
 
 ?>
 
@@ -46,67 +47,22 @@ $aProfessor = $dados['aProfessor'];
                 </div>
             </div>
         </div>
+
         <div class="row">
+            <?php foreach ($aProdutoServico as $value) : ?>
             <div class="col-lg-4 col-md-6">
                 <div class="class-item">
                     <div class="ci-pic">
-                        <img src="<?= baseUrl() ?>assets/img/classes/class-1.jpg" alt="">
+                        <img src="<?= baseUrl() . 'imagem.php?file=produtoServico/' . $value['imagem'] ?>" alt="">
                     </div>
                     <div class="ci-text">
-                        <span>FORÇA</span>
-                        <h5>Levantamento de peso</h5>
+                        <span><?= $value['nome'] ?></span>
+                        <!-- <h5><?= $value['decricao'] ?></h5> -->
                         <!-- <a href="#"><i class="fa fa-angle-right"></i></a> -->
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="class-item">
-                    <div class="ci-pic">
-                        <img src="<?= baseUrl() ?>assets/img/classes/class-2.jpg" alt="">
-                    </div>
-                    <div class="ci-text">
-                        <span>Cardio</span>
-                        <h5>Ciclismo indoor</h5>
-                        <!-- <a href="#"><i class="fa fa-angle-right"></i></a> -->
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="class-item">
-                    <div class="ci-pic">
-                        <img src="<?= baseUrl() ?>assets/img/classes/class-3.jpg" alt="">
-                    </div>
-                    <div class="ci-text">
-                        <span>FORÇA</span>
-                        <h5>Kettlebell power</h5>
-                        <!-- <a href="#"><i class="fa fa-angle-right"></i></a> -->
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6">
-                <div class="class-item">
-                    <div class="ci-pic">
-                        <img src="<?= baseUrl() ?>assets/img/classes/class-4.jpg" alt="">
-                    </div>
-                    <div class="ci-text">
-                        <span>Cardio</span>
-                        <h4>Ciclismo indoor</h4>
-                        <!-- <a href="#"><i class="fa fa-angle-right"></i></a> -->
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="class-item">
-                    <div class="ci-pic">
-                        <img src="<?= baseUrl() ?>assets/img/classes/class-5.jpg" alt="">
-                    </div>
-                    <div class="ci-text">
-                        <span>Treinamento</span>
-                        <h4>Boxe</h4>
-                        <!-- <a href="#"><i class="fa fa-angle-right"></i></a> -->
-                    </div>
-                </div>
-            </div>
+            <?php endforeach; ?>
         </div>
     </div>
 </section>

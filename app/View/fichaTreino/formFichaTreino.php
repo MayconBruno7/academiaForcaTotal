@@ -60,33 +60,39 @@
         <div class="row">
             <div class="col-md-6 mb-3">
                 <label for="data_inicio" class="form-label">Data de Início</label>
-                <input type="date"
+                <input
+                    type="date"
                     class="form-control"
                     id="data_inicio"
                     name="data_inicio"
                     value="<?= setValor("data_inicio") ?>"
-                    required>
+                    required
+                >
                 <?= setMsgFilderError("data_inicio") ?>
             </div>
 
             <div class="col-md-6 mb-3">
                 <label for="validade" class="form-label">Validade</label>
-                <input type="date"
+                <input
+                    type="date"
                     class="form-control"
                     id="validade"
                     name="validade"
                     value="<?= setValor("validade") ?>"
-                    required>
+                    required
+                >
                 <?= setMsgFilderError("validade") ?>
             </div>
         </div>
 
         <div class="mb-3">
             <label for="anotacoes" class="form-label">Anotações</label>
-            <textarea class="form-control"
+            <textarea
+                class="form-control"
                 name="anotacoes"
                 id="anotacoes"
-                rows="3"><?= setValor("anotacoes") ?></textarea>
+                rows="3"
+            ><?= setValor("anotacoes") ?></textarea>
             <?= setMsgFilderError("anotacoes") ?>
         </div>
 

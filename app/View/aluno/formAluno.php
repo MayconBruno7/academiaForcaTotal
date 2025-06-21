@@ -27,19 +27,52 @@ $aUsuarios = $dados['aUsuario'];
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="nome" class="form-label">Nome</label>
-                    <input type="text" class="form-control" id="nome" name="nome" maxlength="100" value="<?= setValor("nome") ?>" required autofocus>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="nome"
+                        name="nome"
+                        minlength="3"
+                        maxlength="100"
+                        value="<?= setValor("nome") ?>"
+                        required
+                        autofocus
+                    >
                     <?= setMsgFilderError("nome") ?>
                 </div>
 
                 <div class="col-md-3 mb-3">
                     <label for="cpf" class="form-label">CPF</label>
-                    <input type="text" class="form-control" id="cpf" name="cpf" maxlength="11" placeholder="Somente números" value="<?= setValor("cpf") ?>" required>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="cpf"
+                        name="cpf"
+                        maxlength="11"
+                        minlength="11"
+                        pattern="\d{11}"
+                        placeholder="Somente números"
+                        value="<?= setValor("cpf") ?>"
+                        required
+                        inputmode="numeric"
+                    >
                     <?= setMsgFilderError("cpf") ?>
                 </div>
 
                 <div class="col-md-3 mb-3">
                     <label for="telefone" class="form-label">Telefone</label>
-                    <input type="text" class="form-control" id="telefone" name="telefone" placeholder="(XX) XXXXX-XXXX" value="<?= setValor("telefone") ?>">
+                    <input
+                        type="tel"
+                        class="form-control"
+                        id="telefone"
+                        name="telefone"
+                        minlength="8"
+                        maxlength="20"
+                        placeholder="(XX) XXXXX-XXXX"
+                        value="<?= setValor("telefone") ?>"
+                        required
+                        inputmode="tel"
+                    >
                     <?= setMsgFilderError("telefone") ?>
                 </div>
             </div>
@@ -47,19 +80,34 @@ $aUsuarios = $dados['aUsuario'];
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="email" class="form-label">E-mail</label>
-                    <input type="email" class="form-control" id="email" name="email" value="<?= setValor("email") ?>">
+                    <input
+                        type="email"
+                        class="form-control"
+                        id="email"
+                        name="email"
+                        maxlength="100"
+                        value="<?= setValor("email") ?>"
+                        required
+                    >
                     <?= setMsgFilderError("email") ?>
                 </div>
 
                 <div class="col-md-3 mb-3">
                     <label for="data_nascimento" class="form-label">Data de Nascimento</label>
-                    <input type="date" class="form-control" id="data_nascimento" name="data_nascimento" value="<?= setValor("data_nascimento") ?>">
+                    <input
+                        type="date"
+                        class="form-control"
+                        id="data_nascimento"
+                        name="data_nascimento"
+                        value="<?= setValor("data_nascimento") ?>"
+                        required
+                    >
                     <?= setMsgFilderError("data_nascimento") ?>
                 </div>
 
                 <div class="col-md-3 mt-4">
                     <label for="plano_id" class="form-label">Plano</label>
-                    <select class="form-select" name="plano_id" id="plano_id" required>
+                    <select class="form-select" name="plano_id" id="plano_id">
                         <option value="">Selecione</option>
                         <?php foreach ($aPlano as $plano): ?>
                             <option value="<?= $plano['id'] ?>" <?= setValor("plano_id") == $plano['id'] ? 'selected' : '' ?>>
@@ -74,7 +122,7 @@ $aUsuarios = $dados['aUsuario'];
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="usuario_id" class="form-label">Usuário</label>
-                    <select class="form-select" name="usuario_id" id="usuario_id" required>
+                    <select class="form-select" name="usuario_id" id="usuario_id">
                         <option value="">Selecione</option>
                         <?php foreach ($aUsuarios as $usuario): ?>
                             <option value="<?= $usuario['id'] ?>" <?= setValor("usuario_id") == $usuario['id'] ? 'selected' : '' ?>>
@@ -88,7 +136,14 @@ $aUsuarios = $dados['aUsuario'];
 
             <div class="mb-3">
                 <label for="endereco" class="form-label">Endereço</label>
-                <textarea class="form-control" name="endereco" id="endereco" rows="2"><?= setValor("endereco") ?></textarea>
+                <textarea
+                    class="form-control"
+                    name="endereco"
+                    id="endereco"
+                    rows="2"
+                    minlength="5"
+                    required
+                ><?= setValor("endereco") ?></textarea>
                 <?= setMsgFilderError("endereco") ?>
             </div>
 

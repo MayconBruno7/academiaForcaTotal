@@ -9,20 +9,44 @@ class ProfessorModel extends ModelMain
     protected $table = "professores";
 
     public $validationRules = [
-        "nome"  => [
-            "label" => 'Nome',
-            "rules" => 'required|min:3|max:50'
+        "usuario_id" => [
+            "label" => "Usuário",
+            "rules" => "required|integer"
         ],
-        // "valor"  => [
-        //     "label" => 'Valor Plano',
-        //     "rules" => 'required|min:2|max:7'
-        // ],
-        // "treinos_semanais"  => [
-        //     "label" => 'Treinos mensais',
-        //     "rules" => 'required|int'
-        // ]
+        "nome" => [
+            "label" => "Nome",
+            "rules" => "required|min:3|max:100"
+        ],
+        "cpf" => [
+            "label" => "CPF",
+            "rules" => "required|numeric|exact_len:11|is_unique:professores.cpf,id,{id}"
+        ],
+        "telefone" => [
+            "label" => "Telefone",
+            "rules" => "required|min:8|max:20"
+        ],
+        "email" => [
+            "label" => "E-mail",
+            "rules" => "required|valid_email|max:100"
+        ],
+        "data_nascimento" => [
+            "label" => "Data de Nascimento",
+            "rules" => "required|valid_date"
+        ],
+        "especialidade" => [
+            "label" => "Especialidade",
+            "rules" => "required|min:3|max:50"
+        ],
+        "endereco" => [
+            "label" => "Endereço",
+            "rules" => "required|min:5"
+        ],
+        "imagem" => [
+            "label" => "Imagem",
+            "rules" => "permit_empty|max_length[255]"
+            // Se for upload, valide tipo/tamanho no controller
+        ]
     ];
-
 
     /**
      * lista
@@ -32,7 +56,7 @@ class ProfessorModel extends ModelMain
      */
     public function listaProfessor()
     {
-          return $this->db
+        return $this->db
             ->select('professores.*')
             ->findAll();
     }

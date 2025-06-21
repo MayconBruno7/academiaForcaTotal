@@ -21,20 +21,28 @@
         <div class="row">
             <div class="col-md-6 mb-3">
                 <label for="nome" class="form-label">Nome do Exercício</label>
-                <input type="text"
+                <input
+                    type="text"
                     class="form-control"
                     id="nome"
                     name="nome"
+                    minlength="3"
                     maxlength="100"
                     value="<?= setValor("nome") ?>"
                     required
-                    autofocus>
+                    autofocus
+                >
                 <?= setMsgFilderError("nome") ?>
             </div>
 
             <div class="col-md-6 mb-3">
                 <label for="grupo_muscular" class="form-label">Grupo Muscular</label>
-                <select class="form-select" name="grupo_muscular" id="grupo_muscular" required>
+                <select
+                    class="form-select"
+                    name="grupo_muscular"
+                    id="grupo_muscular"
+                    required
+                >
                     <option value="">Selecione</option>
                     <option value="Peito" <?= setValor("grupo_muscular") == "Peito" ? 'selected' : '' ?>>Peito</option>
                     <option value="Costas" <?= setValor("grupo_muscular") == "Costas" ? 'selected' : '' ?>>Costas</option>
@@ -47,45 +55,6 @@
                 <?= setMsgFilderError("grupo_muscular") ?>
             </div>
         </div>
-
-        <!-- <div class="row"> -->
-            <!-- <div class="col-md-4 mb-3">
-                <label for="series" class="form-label">Séries</label>
-                <input type="number"
-                    class="form-control"
-                    id="series"
-                    name="series"
-                    min="1"
-                    max="10"
-                    value="<?= setValor("series") ?>"
-                    required>
-                <?= setMsgFilderError("series") ?>
-            </div> -->
-
-            <!-- <div class="col-md-4 mb-3">
-                <label for="repeticoes" class="form-label">Repetições</label>
-                <input type="number"
-                    class="form-control"
-                    id="repeticoes"
-                    name="repeticoes"
-                    min="1"
-                    max="100"
-                    value="<?= setValor("repeticoes") ?>"
-                    required>
-                <?= setMsgFilderError("repeticoes") ?>
-            </div>
-
-            <div class="col-md-4 mb-3">
-                <label for="carga" class="form-label">Carga (kg)</label>
-                <input type="number"
-                    class="form-control"
-                    id="carga"
-                    name="carga"
-                    step="0.5"
-                    value="<?= setValor("carga") ?>">
-                <?= setMsgFilderError("carga") ?>
-            </div>
-        </div> -->
 
         <?= formButton() ?>
     </form>

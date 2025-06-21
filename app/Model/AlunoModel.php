@@ -10,20 +10,39 @@ class AlunoModel extends ModelMain
     protected $table = "alunos";
 
     public $validationRules = [
-        "nome"  => [
-            "label" => 'Nome',
-            "rules" => 'required|min:3|max:50'
+        "nome" => [
+            "label" => "Nome",
+            "rules" => "required|min:3|max:100"
         ],
-        // "valor"  => [
-        //     "label" => 'Valor Plano',
-        //     "rules" => 'required|min:2|max:7'
-        // ],
-        // "treinos_semanais"  => [
-        //     "label" => 'Treinos mensais',
-        //     "rules" => 'required|int'
-        // ]
+        "cpf" => [
+            "label" => "CPF",
+            "rules" => "required|numeric|exact_len:11|is_unique:alunos.cpf,id,{id}"
+        ],
+        "telefone" => [
+            "label" => "Telefone",
+            "rules" => "required|min:8|max:20"
+        ],
+        "email" => [
+            "label" => "E-mail",
+            "rules" => "required|valid_email|max:100"
+        ],
+        "data_nascimento" => [
+            "label" => "Data de Nascimento",
+            "rules" => "required|date"
+        ],
+        "endereco" => [
+            "label" => "Endereço",
+            "rules" => "required|min:5"
+        ],
+        "plano_id" => [
+            "label" => "Plano",
+            "rules" => "permit_empty|int"
+        ],
+        "usuario_id" => [
+            "label" => "Usuário",
+            "rules" => "permit_empty|int"
+        ]
     ];
-
 
     /**
      * lista
@@ -80,7 +99,7 @@ class AlunoModel extends ModelMain
     public function meuExercicio()
     {
         return $this->db
-        ->select('
+            ->select('
             exercicios.nome,
             exercicios.grupo_muscular,
             ficha_exercicio.series,
@@ -89,10 +108,10 @@ class AlunoModel extends ModelMain
             fichas_treino.data_inicio,
             fichas_treino.validade
         ')
-        ->join('fichas_treino', 'fichas_treino.aluno_id = alunos.id', 'left')
-        ->join('ficha_exercicio', 'ficha_exercicio.ficha_id = fichas_treino.id', 'left')
-        ->join('exercicios', 'exercicios.id = ficha_exercicio.exercicio_id', 'left')
-        ->where('alunos.usuario_id', Session::get('userId'))
-        ->findAll();
+            ->join('fichas_treino', 'fichas_treino.aluno_id = alunos.id', 'left')
+            ->join('ficha_exercicio', 'ficha_exercicio.ficha_id = fichas_treino.id', 'left')
+            ->join('exercicios', 'exercicios.id = ficha_exercicio.exercicio_id', 'left')
+            ->where('alunos.usuario_id', Session::get('userId'))
+            ->findAll();
     }
 }
