@@ -10,44 +10,21 @@ class UsuarioModel extends ModelMain
     protected $table = "usuario";
 
     public $validationRules = [
-        'nivel' => [
-            'rules' => 'required|integer|in_list[1,11,21]',
-            'errors' => [
-                'required' => 'O nível é obrigatório.',
-                'integer' => 'O nível deve ser um número inteiro.',
-                'in_list' => 'O nível deve ser 1 (Super Administrador), 11 (Administrador) ou 21 (Usuário).',
-            ],
+        "nome"  => [
+            "label" => 'Nome',
+            "rules" => 'required|min:3|max:60'
         ],
-        'nome' => [
-            'rules' => 'required|string|max_length[60]',
-            'errors' => [
-                'required' => 'O nome é obrigatório.',
-                'max_length' => 'O nome pode ter no máximo 60 caracteres.',
-            ],
+        "email"  => [
+            "label" => 'Email',
+            "rules" => 'required|min:5|max:150'
         ],
-        'email' => [
-            'rules' => 'required|valid_email|max_length[150]',
-            'errors' => [
-                'required' => 'O e-mail é obrigatório.',
-                'valid_email' => 'Informe um e-mail válido.',
-                'max_length' => 'O e-mail pode ter no máximo 150 caracteres.',
-            ],
+        "nivel"  => [
+            "label" => 'Nível',
+            "rules" => 'required|int'
         ],
-        'senha' => [
-            'rules' => 'required|string|min_length[6]|max_length[250]',
-            'errors' => [
-                'required' => 'A senha é obrigatória.',
-                'min_length' => 'A senha deve ter no mínimo 6 caracteres.',
-                'max_length' => 'A senha pode ter no máximo 250 caracteres.',
-            ],
-        ],
-        'statusRegistro' => [
-            'rules' => 'required|integer|in_list[1,2,3]',
-            'errors' => [
-                'required' => 'O status do registro é obrigatório.',
-                'integer' => 'O status do registro deve ser um número inteiro.',
-                'in_list' => 'O status do registro deve ser 1 (Ativo), 2 (Inativo) ou 3 (Bloqueado).',
-            ],
+        "statusRegistro"  => [
+            "label" => 'Status',
+            "rules" => 'required|int'
         ],
     ];
 

@@ -90,14 +90,13 @@ class Usuario extends ControllerMain
                 "senha"             => password_hash($post['senha'], PASSWORD_DEFAULT),
                 "statusRegistro"    => $post['statusRegistro']
             ];
-            
-            if ($this->model->insert($dados)) {         
+
+            if ($this->model->insert($dados)) {
                 return Redirect::page($this->controller, ["msgSucesso" => "Registro atualizado com sucesso."]);
             } else {
                 $lError = true;
                 return Redirect::page($this->controller, ["msgError" => "Erro ao inserir registro."]);
             }
-
         } else {
             Session::set("inputs", $post);
             return Redirect::page($this->controller . '/form/' . $post['action'] . '/' . $post['id']);
@@ -116,14 +115,26 @@ class Usuario extends ControllerMain
 
         unset($post['confSenha']);
 
+        // Prepara o array de dados para update
+        $dados = [
+            'id'                 => $post['id'],
+            'nivel'              => $post['nivel'],
+            'nome'               => $post['nome'],
+            'email'              => $post['email'],
+            'statusRegistro'     => $post['statusRegistro'],
+        ];
+
         if (empty($post['senha'])) {
             unset($post['senha']);
         } else {
             $post['senha'] = password_hash($post['senha'], PASSWORD_DEFAULT);
+            $dados['senha'] = $post['senha'];
         }
 
+        // var_dump($dados);
+        // exit;
         if (!$lError) {
-            if ($this->model->update($post)) {
+            if ($this->model->update($dados)) {
                 return Redirect::page($this->controller, ["msgSucesso" => "Registro atualizado com sucesso."]);
             } else {
                 $lError = true;
